@@ -1,0 +1,319 @@
+/*==========================================================
+                    PRINT.CSS
+            STEP 1 - MODULE SETUP
+==========================================================*/
+
+
+/*==========================================================
+                PAGE SETTINGS
+==========================================================*/
+
+@page{
+
+    size:A4 portrait;
+
+    margin:10mm;
+
+}
+
+
+/*==========================================================
+                PRINT RESET
+==========================================================*/
+
+@media print{
+
+    *{
+
+        margin:0;
+
+        padding:0;
+
+        box-sizing:border-box;
+
+    }
+
+    html,
+
+    body{
+
+        width:210mm;
+
+        min-height:297mm;
+
+        background:#ffffff !important;
+
+        color:#000000 !important;
+
+        overflow:visible;
+
+        font-family:"Poppins",sans-serif;
+
+        font-size:11pt;
+
+        line-height:1.5;
+
+    }
+
+}
+
+
+/*==========================================================
+                PRINT CONTAINER
+==========================================================*/
+
+@media print{
+
+    .print-container{
+
+        width:100%;
+
+        max-width:190mm;
+
+        margin:0 auto;
+
+        padding:0;
+
+    }
+
+}
+
+
+/*==========================================================
+                PAGE BREAK RULES
+==========================================================*/
+
+@media print{
+
+    .page-break{
+
+        page-break-before:always;
+
+        break-before:page;
+
+    }
+
+    .avoid-break{
+
+        page-break-inside:avoid;
+
+        break-inside:avoid;
+
+    }
+
+}
+
+
+
+
+
+/*==========================================================
+            STEP 2 - PRINT TYPOGRAPHY
+==========================================================*/
+
+
+/*==========================================================
+                HEADINGS
+==========================================================*/
+
+@media print{
+
+    h1{
+
+        font-size:24pt;
+
+        font-weight:700;
+
+        line-height:1.3;
+
+        margin-bottom:10pt;
+
+        color:#000000;
+
+    }
+
+    h2{
+
+        font-size:20pt;
+
+        font-weight:600;
+
+        line-height:1.3;
+
+        margin-bottom:9pt;
+
+        color:#000000;
+
+    }
+
+    h3{
+
+        font-size:17pt;
+
+        font-weight:600;
+
+        line-height:1.3;
+
+        margin-bottom:8pt;
+
+        color:#000000;
+
+    }
+
+    h4{
+
+        font-size:15pt;
+
+        font-weight:600;
+
+        line-height:1.3;
+
+        margin-bottom:7pt;
+
+        color:#000000;
+
+    }
+
+    h5{
+
+        font-size:13pt;
+
+        font-weight:600;
+
+        line-height:1.3;
+
+        margin-bottom:6pt;
+
+        color:#000000;
+
+    }
+
+    h6{
+
+        font-size:12pt;
+
+        font-weight:600;
+
+        line-height:1.3;
+
+        margin-bottom:5pt;
+
+        color:#000000;
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*==========================================================
+            STEP 11 - HIDDEN PDF PREVIEW
+==========================================================*/
+
+/* Hidden container */
+
+.biodata-preview-container{
+
+    position:fixed;
+
+    left:0;
+
+    top:0;
+
+    width:1024px;
+
+    height:1536px;
+
+    overflow:hidden;
+
+    visibility:hidden;
+
+    z-index:-1;
+
+}
+
+/* A4 page */
+
+.preview-page{
+
+    position:relative;
+
+    width:1024px;
+
+    min-width:1024px;
+
+    max-width:1024px;
+
+    height:1536px;
+
+    min-height:1536px;
+
+    max-height:1536px;
+
+    overflow:hidden;
+
+    background:#fff;
+
+}
+
+
+.preview-page div{
+
+    position:absolute;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    color:#111;
+
+    font-family:"Poppins",sans-serif;
+
+    line-height:1.35;
+
+}
+
+
+
+.pdf-template{
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    width:1024px;
+
+    height:1536px;
+
+    min-width:1024px;
+
+    min-height:1536px;
+
+    max-width:1024px;
+
+    max-height:1536px;
+
+    object-fit:fill;
+
+    display:block;
+
+}
+
+
+
+
