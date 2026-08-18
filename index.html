@@ -1324,6 +1324,51 @@
                 <div class="form-step active-step" data-step="1">
 
                     <!-- ==========================================
+                                PASTE-TO-AUTOFILL
+                    =========================================== -->
+
+                    <div class="form-card" id="autofillCard">
+
+                        <div class="form-card-header">
+
+                            <h3>
+                                📋 Already have a biodata?
+                            </h3>
+
+                            <p>
+                                Paste your existing biodata text below and we'll auto-fill the form for you.
+                            </p>
+
+                        </div>
+
+                        <div class="row g-3">
+
+                            <div class="col-12">
+
+                                <textarea id="autofillInput" class="form-control" rows="5"
+                                    placeholder="Paste your biodata text here, e.g.&#10;Name : Ananya Sharma&#10;Date of Birth : 14 December 1997&#10;Height : 5'6&quot;&#10;..."></textarea>
+
+                            </div>
+
+                            <div class="col-12 d-flex align-items-center gap-2 flex-wrap">
+
+                                <button type="button" id="autofillBtn" class="btn btn-primary">
+                                    ✨ Auto-fill Form
+                                </button>
+
+                                <button type="button" id="autofillClearBtn" class="btn btn-outline-secondary">
+                                    Clear
+                                </button>
+
+                                <small id="autofillStatus" class="text-muted"></small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ==========================================
                                 PERSONAL DETAILS
                     =========================================== -->
 
@@ -3005,6 +3050,8 @@
 <script src="./scripts/validation.js"></script>
 
 <script src="./scripts/storage.js"></script>
+
+<script src="./scripts/autofill.js"></script>
 
 <script src="./scripts/positions.js"></script>
 
