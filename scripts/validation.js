@@ -1875,58 +1875,58 @@ document.addEventListener(
         initializeLiveValidation();
 
         // Personal Details
-        initializeCharacterCounter("fullName", 20);
-        initializeCharacterCounter("placeOfBirth", 25);
+        initializeCharacterCounter("fullName", 35);
+        initializeCharacterCounter("placeOfBirth", 40);
 
-        initializeCharacterCounter("rashi", 20);
-        initializeCharacterCounter("gan", 20);
-        initializeCharacterCounter("height", 20);
-        initializeCharacterCounter("complexion", 20);
-        initializeCharacterCounter("caste", 20);
+        initializeCharacterCounter("rashi", 35);
+        initializeCharacterCounter("gan", 35);
+        initializeCharacterCounter("height", 35);
+        initializeCharacterCounter("complexion", 35);
+        initializeCharacterCounter("caste", 35);
 
-        initializeCharacterCounter("language", 25);
-        initializeCharacterCounter("hobbies", 25);
-        initializeCharacterCounter("other", 40);
+        initializeCharacterCounter("language", 40);
+        initializeCharacterCounter("hobbies", 40);
+        initializeCharacterCounter("other", 65);
 
 
 
 
         // Education
-        initializeCharacterCounter("highestQualification", 25);
-        initializeCharacterCounter("college", 25);
-        initializeCharacterCounter("Board10th", 25);
-        initializeCharacterCounter("Board12th", 25);
-        initializeCharacterCounter("specialSkill", 25);
-        initializeCharacterCounter("educationOther", 25);
+        initializeCharacterCounter("highestQualification", 40);
+        initializeCharacterCounter("college", 40);
+        initializeCharacterCounter("Board10th", 40);
+        initializeCharacterCounter("Board12th", 40);
+        initializeCharacterCounter("specialSkill", 40);
+        initializeCharacterCounter("educationOther", 40);
 
         // Work & Career
-        initializeCharacterCounter("profession", 25);
-        initializeCharacterCounter("organization", 25);
-        initializeCharacterCounter("workPlace", 25);
-        initializeCharacterCounter("income", 25);
+        initializeCharacterCounter("profession", 40);
+        initializeCharacterCounter("organization", 40);
+        initializeCharacterCounter("workPlace", 40);
+        initializeCharacterCounter("income", 40);
 
 
 
         // Family
-        initializeCharacterCounter("fatherName", 25);
-        initializeCharacterCounter("fatherOccupation", 25);
-        initializeCharacterCounter("motherName", 25);
-        initializeCharacterCounter("motherOccupation", 25);
-        initializeCharacterCounter("siblingsDetails", 40);
+        initializeCharacterCounter("fatherName", 40);
+        initializeCharacterCounter("fatherOccupation", 40);
+        initializeCharacterCounter("motherName", 40);
+        initializeCharacterCounter("motherOccupation", 40);
+        initializeCharacterCounter("siblingsDetails", 65);
 
         // Partner Preference
-        initializeCharacterCounter("preferredQualification", 25);
-        initializeCharacterCounter("preferredProfession", 25);
-        initializeCharacterCounter("preferredLocation", 25);
-        initializeCharacterCounter("otherExpectations", 25);
+        initializeCharacterCounter("preferredQualification", 40);
+        initializeCharacterCounter("preferredProfession", 40);
+        initializeCharacterCounter("preferredLocation", 40);
+        initializeCharacterCounter("otherExpectations", 40);
 
         // Address Details
-        initializeCharacterCounter("currentAddress", 75);
-        initializeCharacterCounter("permanentAddress", 75);
+        initializeCharacterCounter("currentAddress", 120);
+        initializeCharacterCounter("permanentAddress", 120);
 
         initializeCharacterCounter("mobileNumber", 15);
 
-        initializeCharacterCounter("senderName", 20);
+        initializeCharacterCounter("senderName", 35);
 
         initializeCharacterCounter("senderMobile", 15);
 

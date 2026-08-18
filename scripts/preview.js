@@ -272,10 +272,83 @@ function applyPositions() {
 
     });
 
+    autoFitAllText();
+
 }
 
 
 
 
+/*=========================================
+        AUTO-FIT TEXT (prevents overflow
+        when longer values are entered)
+=========================================*/
+
+function autoFitText(e, p) {
+
+    if (!e || !p) return;
+
+    if (p.multiline) {
+
+        if (!p.height) return;
+
+        let size = p.fontSize || 18;
+        const minFontSize = Math.max(10, Math.round(size * 0.55));
+
+        e.style.fontSize = size + "px";
+
+        // shrink until the text block fits inside its box height
+        while (e.scrollHeight > p.height && size > minFontSize) {
+
+            size -= 1;
+            e.style.fontSize = size + "px";
+
+        }
+
+    } else {
+
+        if (!p.width) return;
+
+        let size = parseFloat(e.style.fontSize) || p.fontSize || 18;
+        const minFontSize = Math.max(10, Math.round(size * 0.55));
+
+        e.style.fontSize = size + "px";
+
+        // shrink until the single line fits inside its box width
+        while (e.scrollWidth > p.width && size > minFontSize) {
+
+            size -= 1;
+            e.style.fontSize = size + "px";
+
+        }
+
+        // last-resort safety net: if it still doesn't fit at the
+        // smallest readable size, clip cleanly instead of overlapping
+        // neighbouring content (e.g. the photo box)
+        if (e.scrollWidth > p.width) {
+
+            e.style.overflow = "hidden";
+            e.style.textOverflow = "ellipsis";
+
+        }
+
+    }
+
+}
+
+
+function autoFitAllText() {
+
+    Object.entries(POSITIONS).forEach(([id, p]) => {
+
+        const e = document.getElementById(id);
+
+        if (!e) return;
+
+        autoFitText(e, p);
+
+    });
+
+}
 
 
