@@ -3,6 +3,10 @@
     Parses pasted biodata text and fills matching form fields
 ==========================================================*/
 
+// tracks which field ids were last filled by autofill, so the
+// "Clear" button can wipe exactly those fields (and nothing else)
+let lastAutofilledFieldIds = [];
+
 const AUTOFILL_MONTHS = {
     jan: "01", january: "01",
     feb: "02", february: "02",
@@ -31,14 +35,15 @@ const AUTOFILL_FIELD_MAP = {
     "dateofbirth": { id: "dob", type: "date" },
     "dob": { id: "dob", type: "date" },
     "timeofbirth": { id: "birthTime", type: "time" },
+    "time": { id: "birthTime", type: "time" },
     "placeofbirth": { id: "placeOfBirth", type: "text" },
+    "birthplace": { id: "placeOfBirth", type: "text" },
     "rashi": { id: "rashi", type: "text" },
     "gan": { id: "gan", type: "select" },
     "height": { id: "height", type: "text" },
     "complexion": { id: "complexion", type: "text" },
     "maritalstatus": { id: "maritalStatus", type: "select" },
     "caste": { id: "caste", type: "text" },
-    "gotra": { id: "caste", type: "text" },
     "manglik": { id: "manglik", type: "select" },
     "manglikstatus": { id: "manglik", type: "select" },
     "language": { id: "language", type: "text" },
@@ -90,6 +95,8 @@ const AUTOFILL_FIELD_MAP = {
     "contactnumber": { id: "mobileNumber", type: "text" },
     "phone": { id: "mobileNumber", type: "text" },
     "mobile": { id: "mobileNumber", type: "text" },
+    "parentscontact": { id: "mobileNumber", type: "text" },
+    "parentcontact": { id: "mobileNumber", type: "text" },
     "residentialaddress": { id: "currentAddress", type: "text" },
     "currentaddress": { id: "currentAddress", type: "text" },
     "address": { id: "currentAddress", type: "text" },
@@ -177,7 +184,7 @@ function applyAutofillTime(value) {
     const minuteEl = document.getElementById("birthMinute");
     const periodEl = document.getElementById("birthPeriod");
 
-    let hour = m[1].padStart(2, "0");
+    let hour = m[1].replace(/^0+(?=\d)/, "");
     const minute = m[2];
     const period = m[3] ? m[3].toUpperCase() : "";
 
@@ -225,6 +232,7 @@ function parseAutofillText(rawText) {
 
     const entries = [];
     let current = null;
+    let personContext = null; // "father" | "mother" | null
 
     lines.forEach((rawLine) => {
 
@@ -238,8 +246,40 @@ function parseAutofillText(rawText) {
         if (match) {
 
             const normalized = normalizeAutofillLabel(match[1]);
-            const field = matchAutofillField(normalized);
+            let field = matchAutofillField(normalized);
             const value = match[2].trim();
+
+            // biodatas often list a generic "Profession"/"Occupation" line
+            // right under "Father" or "Mother" — redirect it instead of
+            // overwriting the candidate's own occupation field
+            if (field && field.id === "profession" &&
+                (normalized === "profession" || normalized === "occupation")) {
+
+                if (personContext === "father") {
+
+                    field = AUTOFILL_FIELD_MAP["fatheroccupation"];
+
+                } else if (personContext === "mother") {
+
+                    field = AUTOFILL_FIELD_MAP["motheroccupation"];
+
+                }
+
+                personContext = null;
+
+            } else if (field && field.id === "fatherName") {
+
+                personContext = "father";
+
+            } else if (field && field.id === "motherName") {
+
+                personContext = "mother";
+
+            } else if (field) {
+
+                personContext = null;
+
+            }
 
             if (field) {
 
@@ -248,7 +288,7 @@ function parseAutofillText(rawText) {
 
             } else {
 
-                // a labeled line we don't support (e.g. "Religion", "Blood Group") —
+                // a labeled line we don't support (e.g. "Religion", "Gotra") —
                 // don't let unrelated continuation lines attach to the previous field
                 current = null;
 
@@ -277,6 +317,7 @@ function applyAutofillEntries(entries) {
 
     let filledCount = 0;
     const skippedLabels = [];
+    const filledIds = [];
 
     entries.forEach(({ field, value }) => {
 
@@ -284,7 +325,19 @@ function applyAutofillEntries(entries) {
 
         if (field.type === "time") {
 
-            if (applyAutofillTime(value)) filledCount++;
+            const touched = applyAutofillTime(value);
+
+            if (touched) {
+
+                filledCount++;
+                ["birthHour", "birthMinute", "birthPeriod"].forEach(id => {
+
+                    if (document.getElementById(id)) filledIds.push(id);
+
+                });
+
+            }
+
             return;
 
         }
@@ -312,9 +365,17 @@ function applyAutofillEntries(entries) {
 
         } else {
 
+            let cleanValue = value;
+
+            if (field.id === "mobileNumber" || field.id === "senderMobile") {
+
+                cleanValue = value.replace(/[\s\-]/g, "");
+
+            }
+
             const max = el.getAttribute("maxlength");
 
-            el.value = max ? value.slice(0, parseInt(max, 10)) : value;
+            el.value = max ? cleanValue.slice(0, parseInt(max, 10)) : cleanValue;
             applied = true;
 
         }
@@ -323,6 +384,7 @@ function applyAutofillEntries(entries) {
 
             autofillFireEvents(el);
             filledCount++;
+            filledIds.push(field.id);
 
         } else {
 
@@ -332,7 +394,42 @@ function applyAutofillEntries(entries) {
 
     });
 
-    return { filledCount, skippedLabels };
+    return { filledCount, skippedLabels, filledIds };
+
+}
+
+
+function getSelectedHeaderBlessing() {
+
+    const select = document.getElementById("headerBlessingSelect");
+    const customInput = document.getElementById("headerBlessingCustom");
+
+    if (!select) return "|| ॐ गं गणपतये नमः ||";
+
+    if (select.value === "custom") {
+
+        const custom = customInput ? customInput.value.trim() : "";
+        return custom || "|| ॐ गं गणपतये नमः ||";
+
+    }
+
+    return select.value;
+
+}
+
+
+function initializeHeaderBlessing() {
+
+    const select = document.getElementById("headerBlessingSelect");
+    const customWrap = document.getElementById("headerBlessingCustomWrap");
+
+    if (!select || !customWrap) return;
+
+    select.addEventListener("change", () => {
+
+        customWrap.style.display = select.value === "custom" ? "block" : "none";
+
+    });
 
 }
 
@@ -369,7 +466,9 @@ function initializeAutofill() {
 
         }
 
-        const { filledCount } = applyAutofillEntries(entries);
+        const { filledCount, filledIds } = applyAutofillEntries(entries);
+
+        lastAutofilledFieldIds = filledIds;
 
         status.textContent =
             `✅ ${filledCount} field${filledCount === 1 ? "" : "s"} filled. Please review each step before downloading — some fields may need manual entry.`;
@@ -382,7 +481,24 @@ function initializeAutofill() {
         clearBtn.addEventListener("click", () => {
 
             input.value = "";
-            status.textContent = "";
+
+            lastAutofilledFieldIds.forEach((id) => {
+
+                const el = document.getElementById(id);
+
+                if (!el) return;
+
+                el.value = "";
+                autofillFireEvents(el);
+
+            });
+
+            lastAutofilledFieldIds = [];
+
+            status.textContent = lastAutofilledFieldIds.length === 0 && input.value === ""
+                ? "Cleared."
+                : "";
+            status.className = "text-muted";
 
         });
 
@@ -392,3 +508,4 @@ function initializeAutofill() {
 
 
 document.addEventListener("DOMContentLoaded", initializeAutofill);
+document.addEventListener("DOMContentLoaded", initializeHeaderBlessing);

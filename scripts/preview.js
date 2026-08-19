@@ -5,6 +5,13 @@
 function renderPreviewContainer() {
 
     /* ==========================
+            Religious Header
+    ========================== */
+
+    document.getElementById("previewHeaderBlessing").textContent =
+        getSelectedHeaderBlessing();
+
+    /* ==========================
             Personal Details
     ========================== */
 
@@ -206,6 +213,21 @@ function applyPositions() {
             e.style.fontWeight = p.fontWeight;
 
         e.style.lineHeight = "1.3";
+
+        if (p.align)
+            e.style.textAlign = p.align;
+
+        /*=========================================
+                RELIGIOUS HEADER STYLE
+        =========================================*/
+
+        if (id === "previewHeaderBlessing") {
+
+            e.style.color = "#8a1f2d";
+            e.style.fontFamily = "'Noto Sans Devanagari', 'Mangal', sans-serif";
+            e.style.textAlign = "center";
+
+        }
 
         /*=========================================
                 PREMIUM NAME STYLE

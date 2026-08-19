@@ -972,6 +972,18 @@ function returnToLandingPage(){
 
     }
 
+    const resumeSection = document.getElementById(
+
+        "resumeFormSection"
+
+    );
+
+    if(resumeSection){
+
+        resumeSection.classList.add("d-none");
+
+    }
+
     window.scrollTo({
 
         top:0,

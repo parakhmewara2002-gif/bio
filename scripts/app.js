@@ -649,11 +649,11 @@ window.addEventListener("scroll", () => {
 
 const APP = {
 
-    name: "Kalwar Vaivahiki",
+    name: "Biodata & Resume Studio",
 
     version: "1.0.0",
 
-    author: "Kalwar Vaivahiki",
+    author: "Biodata & Resume Studio",
 
     environment: "Production"
 
@@ -695,8 +695,8 @@ function consoleBanner(){
     console.log(
 `
 ==========================================================
-            KALWAR VAIVAHIKI
-        Matrimonial Biodata Generator
+            BIODATA & RESUME STUDIO
+        Free Biodata & Resume Generator
 ==========================================================
 
 Version      : ${APP.version}

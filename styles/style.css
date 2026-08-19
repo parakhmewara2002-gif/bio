@@ -691,6 +691,121 @@ body{
 
 }
 
+/*==========================================================
+                HERO CHOICE CARDS (Biodata / Resume)
+==========================================================*/
+
+.hero-choice-cards{
+
+    display:flex;
+
+    gap:22px;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    margin-bottom:26px;
+
+}
+
+.hero-choice-card{
+
+    width:260px;
+
+    background:rgba(255,255,255,0.08);
+
+    border:2px solid rgba(255,215,0,0.35);
+
+    border-radius:18px;
+
+    padding:28px 22px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    text-align:center;
+
+    gap:8px;
+
+    cursor:pointer;
+
+    transition:all 0.25s ease;
+
+    backdrop-filter:blur(4px);
+
+}
+
+.hero-choice-card:hover{
+
+    background:var(--secondary);
+
+    border-color:var(--secondary);
+
+    transform:translateY(-6px);
+
+    box-shadow:0 14px 30px -10px rgba(0,0,0,0.4);
+
+}
+
+.hero-choice-icon{
+
+    font-size:42px;
+
+    line-height:1;
+
+    margin-bottom:6px;
+
+}
+
+.hero-choice-title{
+
+    font-size:20px;
+
+    font-weight:700;
+
+    color:var(--white);
+
+}
+
+.hero-choice-card:hover .hero-choice-title{
+
+    color:var(--primary);
+
+}
+
+.hero-choice-desc{
+
+    font-size:13.5px;
+
+    color:rgba(255,255,255,0.75);
+
+    line-height:1.5;
+
+}
+
+.hero-choice-card:hover .hero-choice-desc{
+
+    color:var(--primary-dark);
+
+}
+
+@media (max-width:600px){
+
+    .hero-choice-card{
+
+        width:100%;
+
+        max-width:320px;
+
+    }
+
+}
+
+
 .hero-stats{
 
     display:flex;
@@ -2234,5 +2349,161 @@ textarea.is-valid:focus{
     color: #FFD700;
 
     text-decoration: underline;
+
+}
+
+/*==========================================================
+                RESUME GENERATOR STYLES
+==========================================================*/
+
+.resume-repeat-block{
+
+    margin-bottom: 4px;
+
+}
+
+#resumePreviewShell{
+
+    background: #ddd3;
+    border-radius: 14px;
+    padding: 18px;
+    border: 1px solid #e0e0e0;
+    width: 100%;
+    max-width: 720px;
+    display: flex;
+    justify-content: center;
+
+}
+
+#resumePreview{
+
+    width: 100%;
+    max-width: 680px;
+    background: #ffffff;
+    padding: 42px 44px;
+    color: #1f2933;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    box-shadow: 0 10px 30px -12px rgba(0,0,0,0.25);
+    min-height: 300px;
+
+}
+
+.resume-header{
+
+    text-align: center;
+    border-bottom: 3px solid #2c3e50;
+    padding-bottom: 14px;
+    margin-bottom: 20px;
+
+}
+
+.resume-header h1{
+
+    margin: 0 0 6px;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #1f2933;
+
+}
+
+.resume-contact{
+
+    margin: 0;
+    font-size: 13px;
+    color: #52606d;
+
+}
+
+.resume-section{
+
+    margin-bottom: 18px;
+
+}
+
+.resume-section h2{
+
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #2c3e50;
+    border-bottom: 1px solid #d9e2ec;
+    padding-bottom: 4px;
+    margin-bottom: 10px;
+
+}
+
+.resume-section p{
+
+    font-size: 13.5px;
+    line-height: 1.6;
+    margin: 0;
+    color: #334e68;
+
+}
+
+.resume-entry{
+
+    margin-bottom: 12px;
+
+}
+
+.resume-entry-top{
+
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 14px;
+
+}
+
+.resume-entry-top strong{
+
+    color: #1f2933;
+
+}
+
+.resume-entry-top span{
+
+    font-size: 12.5px;
+    color: #7b8794;
+    white-space: nowrap;
+
+}
+
+.resume-entry-sub{
+
+    font-size: 13px;
+    color: #52606d;
+    font-style: italic;
+    margin-bottom: 4px;
+
+}
+
+.resume-skill-tags{
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+}
+
+.resume-skill-tags span{
+
+    background: #e8f0fe;
+    color: #1a56db;
+    font-size: 12.5px;
+    padding: 4px 12px;
+    border-radius: 999px;
+
+}
+
+@media (max-width:600px){
+
+    #resumePreview{
+
+        padding: 26px 20px;
+
+    }
 
 }

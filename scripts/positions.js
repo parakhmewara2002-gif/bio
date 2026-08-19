@@ -1,6 +1,12 @@
 const POSITIONS = {
 
     /*==============================
+            RELIGIOUS HEADER (editable invocation line)
+    ==============================*/
+
+    previewHeaderBlessing: { left: 400, top: 24, width: 275, fontSize: 20, fontWeight: 700, align: "center" },
+
+    /*==============================
             PERSONAL DETAILS
     ==============================*/
 

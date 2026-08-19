@@ -1,3 +1,3 @@
 // js/config.js
 
-window.APP_NAME = "Jaiswal Vaivaahiki";
+window.APP_NAME = "Biodata & Resume Studio";
