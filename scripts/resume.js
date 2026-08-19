@@ -59,9 +59,19 @@ function showResumeStep(step) {
 
     document.querySelectorAll("[data-resume-step]").forEach((el) => {
 
-        el.classList.toggle("active-step", parseInt(el.dataset.resumeStep, 10) === step);
+        el.classList.add("d-none");
+        el.classList.remove("active-step");
 
     });
+
+    const current = document.querySelector(`[data-resume-step="${step}"]`);
+
+    if (current) {
+
+        current.classList.remove("d-none");
+        current.classList.add("active-step");
+
+    }
 
     const indicator = document.getElementById("resumeStepIndicator");
 
