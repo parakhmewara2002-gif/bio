@@ -254,19 +254,69 @@ function hidePreviewContainer(){
 }
 
 
+function showModernPreviewContainer(){
+
+    const container = document.querySelector(".biodata-modern-preview-container");
+
+    if(!container){
+
+        return;
+
+    }
+
+    container.style.visibility = "visible";
+    container.style.zIndex = "999999";
+
+}
+
+
+function hideModernPreviewContainer(){
+
+    const container = document.querySelector(".biodata-modern-preview-container");
+
+    if(!container){
+
+        return;
+
+    }
+
+    container.style.visibility = "hidden";
+    container.style.zIndex = "-1";
+
+}
+
+
 /*==========================================================
                 PREPARE PDF
 ==========================================================*/
 
 function preparePDF(){
 
-    if(typeof renderPreviewContainer === "function"){
+    const template = typeof getSelectedBiodataTemplate === "function"
+        ? getSelectedBiodataTemplate()
+        : "classic";
 
-        renderPreviewContainer();
+    if (template === "modern") {
+
+        if (typeof renderModernBiodataPreview === "function") {
+
+            renderModernBiodataPreview();
+
+        }
+
+        showModernPreviewContainer();
+
+    } else {
+
+        if(typeof renderPreviewContainer === "function"){
+
+            renderPreviewContainer();
+
+        }
+
+        showPreviewContainer();
 
     }
-
-    showPreviewContainer();
 
 }
 
@@ -278,6 +328,7 @@ function preparePDF(){
 function cleanupPDF(){
 
     hidePreviewContainer();
+    hideModernPreviewContainer();
 
 }
 
@@ -292,7 +343,13 @@ async function createCanvasPage1(){
     await new Promise(resolve=>requestAnimationFrame(resolve));
     await new Promise(resolve=>requestAnimationFrame(resolve));
 
-    const page=getPreviewPage1();
+    const template = typeof getSelectedBiodataTemplate === "function"
+        ? getSelectedBiodataTemplate()
+        : "classic";
+
+    const page = template === "modern"
+        ? document.getElementById("biodataModernPreview")
+        : getPreviewPage1();
 
     if(!page){
 

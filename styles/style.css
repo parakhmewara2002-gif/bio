@@ -2746,3 +2746,432 @@ textarea.is-valid:focus{
     }
 
 }
+
+
+/*==========================================================
+                RESUME TEMPLATE PICKER
+==========================================================*/
+
+.resume-template-picker{
+
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+
+}
+
+.resume-template-option{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    transition: all .2s ease;
+
+}
+
+.resume-template-option input{
+
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+
+}
+
+.resume-template-option:has(input:checked){
+
+    border-color: #2f6fed;
+    background: #eef4ff;
+
+}
+
+.resume-template-swatch{
+
+    width: 64px;
+    height: 84px;
+    border-radius: 8px;
+    display: block;
+    box-shadow: 0 4px 12px -4px rgba(0,0,0,0.25);
+
+}
+
+.resume-template-swatch-modern{
+
+    background: linear-gradient(180deg, #1e3a5f 0 22px, #ffffff 22px);
+    border: 1px solid #dce6f5;
+
+}
+
+.resume-template-swatch-classic{
+
+    background: linear-gradient(180deg, #ffffff 0 22px, #ffffff 22px);
+    border: 2px solid #1f2933;
+    position: relative;
+
+}
+
+.resume-template-swatch-minimal{
+
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-left: 4px solid #0f9d78;
+
+}
+
+.resume-template-name{
+
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #1e3a5f;
+
+}
+
+
+/*==========================================================
+        RESUME TEMPLATE: CLASSIC (serif, black & white)
+==========================================================*/
+
+#resumePreview.resume-template-classic{
+
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: #1a1a1a;
+
+}
+
+#resumePreview.resume-template-classic .resume-header{
+
+    border-bottom: 2px solid #1a1a1a;
+    text-align: left;
+
+}
+
+#resumePreview.resume-template-classic .resume-header h1{
+
+    font-family: 'Georgia', serif;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 24px;
+
+}
+
+#resumePreview.resume-template-classic .resume-contact{
+
+    color: #444;
+
+}
+
+#resumePreview.resume-template-classic .resume-section h2{
+
+    font-family: 'Georgia', serif;
+    color: #1a1a1a;
+    border-bottom: 1px solid #1a1a1a;
+    text-transform: none;
+    letter-spacing: 0;
+    font-style: italic;
+
+}
+
+#resumePreview.resume-template-classic .resume-entry-top strong{
+
+    color: #1a1a1a;
+
+}
+
+#resumePreview.resume-template-classic .resume-skill-tags span{
+
+    background: none;
+    color: #1a1a1a;
+    padding: 0 14px 0 0;
+    border-radius: 0;
+
+}
+
+#resumePreview.resume-template-classic .resume-skill-tags span::after{
+
+    content: "•";
+    margin-left: 14px;
+    color: #999;
+
+}
+
+#resumePreview.resume-template-classic .resume-skill-tags span:last-child::after{
+
+    content: "";
+
+}
+
+
+/*==========================================================
+        RESUME TEMPLATE: MINIMAL (light, spacious, green accent)
+==========================================================*/
+
+#resumePreview.resume-template-minimal{
+
+    font-family: 'Segoe UI', Arial, sans-serif;
+    padding: 50px 50px;
+
+}
+
+#resumePreview.resume-template-minimal .resume-header{
+
+    text-align: left;
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 30px;
+
+}
+
+#resumePreview.resume-template-minimal .resume-header h1{
+
+    font-weight: 300;
+    font-size: 32px;
+    color: #111;
+
+}
+
+#resumePreview.resume-template-minimal .resume-contact{
+
+    color: #0f9d78;
+    font-weight: 600;
+
+}
+
+#resumePreview.resume-template-minimal .resume-section{
+
+    margin-bottom: 26px;
+
+}
+
+#resumePreview.resume-template-minimal .resume-section h2{
+
+    font-weight: 600;
+    font-size: 12.5px;
+    letter-spacing: 2.5px;
+    color: #0f9d78;
+    border-bottom: none;
+
+}
+
+#resumePreview.resume-template-minimal .resume-entry-top strong{
+
+    font-weight: 600;
+    color: #111;
+
+}
+
+#resumePreview.resume-template-minimal .resume-skill-tags span{
+
+    background: #eafaf4;
+    color: #0f9d78;
+
+}
+
+
+/*==========================================================
+        BIODATA TEMPLATE SWATCHES (picker preview icons)
+==========================================================*/
+
+.biodata-template-swatch-classic{
+
+    background: linear-gradient(180deg, #7B1113 0 18px, #fffdf8 18px);
+    border: 1px solid #f0d98c;
+
+}
+
+.biodata-template-swatch-modern{
+
+    background: #fffdf8;
+    border: 2px solid #c79a3a;
+    position: relative;
+
+}
+
+
+/*==========================================================
+        MODERN BIODATA TEMPLATE (flowing HTML, gold/wine)
+==========================================================*/
+
+.biodata-modern-preview-container{
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 794px;
+    height: 1123px;
+    overflow: hidden;
+    visibility: hidden;
+    z-index: -1;
+
+}
+
+#biodataModernPreview{
+
+    width: 794px;
+    height: 1123px;
+    box-sizing: border-box;
+    background: #fffcf6;
+    padding: 46px 52px;
+    font-family: 'Mukta', 'Segoe UI', sans-serif;
+    color: #2b1b1f;
+    position: relative;
+    border: 10px solid #fffcf6;
+
+}
+
+#biodataModernPreview::before{
+
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border: 2px solid #c79a3a;
+    pointer-events: none;
+
+}
+
+#biodataModernPreview::after{
+
+    content: "";
+    position: absolute;
+    inset: 20px;
+    border: 1px solid #e9d3a0;
+    pointer-events: none;
+
+}
+
+.bmp-header{
+
+    text-align: center;
+    margin-bottom: 18px;
+    position: relative;
+
+}
+
+.bmp-blessing{
+
+    font-size: 15px;
+    color: #8a1f2d;
+    font-weight: 700;
+    margin-bottom: 4px;
+
+}
+
+.bmp-title{
+
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: #6E1E3A;
+    margin: 0 0 2px;
+
+}
+
+.bmp-divider{
+
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #c79a3a, transparent);
+    margin: 10px auto 18px;
+    width: 60%;
+
+}
+
+.bmp-top{
+
+    display: flex;
+    gap: 22px;
+    margin-bottom: 6px;
+    position: relative;
+
+}
+
+.bmp-photo{
+
+    width: 118px;
+    height: 145px;
+    border: 2px solid #c79a3a;
+    border-radius: 6px;
+    object-fit: cover;
+    background: #f7ede0;
+    flex-shrink: 0;
+
+}
+
+.bmp-name{
+
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    font-weight: 700;
+    color: #6E1E3A;
+    margin-bottom: 6px;
+
+}
+
+.bmp-mini{
+
+    font-size: 12.5px;
+    color: #6b5a5e;
+    line-height: 1.7;
+
+}
+
+.bmp-section{
+
+    margin-top: 16px;
+
+}
+
+.bmp-section h3{
+
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: #6E1E3A;
+    margin: 0 0 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+}
+
+.bmp-section h3::before{
+
+    content: "";
+    width: 7px;
+    height: 7px;
+    background: #c79a3a;
+    border-radius: 50%;
+    display: inline-block;
+
+}
+
+.bmp-table{
+
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+
+}
+
+.bmp-table tr td{
+
+    padding: 3px 0;
+    vertical-align: top;
+
+}
+
+.bmp-table tr td:first-child{
+
+    width: 34%;
+    color: #6b5a5e;
+    font-weight: 600;
+
+}
+
+.bmp-table tr td:last-child{
+
+    color: #2b1b1f;
+
+}

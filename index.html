@@ -1319,6 +1319,38 @@
                 <div class="form-step active-step" data-step="1">
 
                     <!-- ==========================================
+                                BIODATA TEMPLATE SELECTOR
+                    =========================================== -->
+
+                    <div class="form-card" id="biodataTemplateCard">
+
+                        <div class="form-card-header">
+
+                            <h3>🎨 Choose a Template</h3>
+
+                            <p>Pick a design style for your biodata — you can change this anytime before downloading.</p>
+
+                        </div>
+
+                        <div class="resume-template-picker">
+
+                            <label class="resume-template-option">
+                                <input type="radio" name="biodataTemplate" value="classic" checked>
+                                <span class="resume-template-swatch biodata-template-swatch-classic"></span>
+                                <span class="resume-template-name">Classic</span>
+                            </label>
+
+                            <label class="resume-template-option">
+                                <input type="radio" name="biodataTemplate" value="modern">
+                                <span class="resume-template-swatch biodata-template-swatch-modern"></span>
+                                <span class="resume-template-name">Modern</span>
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ==========================================
                                 RELIGIOUS HEADER SELECTOR
                     =========================================== -->
 
@@ -2875,6 +2907,40 @@
 
                         <div class="form-card-header">
 
+                            <h3>🎨 Choose a Template</h3>
+
+                            <p>Pick a design style for your resume — you can change this anytime before downloading.</p>
+
+                        </div>
+
+                        <div class="resume-template-picker">
+
+                            <label class="resume-template-option">
+                                <input type="radio" name="resumeTemplate" value="modern" checked>
+                                <span class="resume-template-swatch resume-template-swatch-modern"></span>
+                                <span class="resume-template-name">Modern</span>
+                            </label>
+
+                            <label class="resume-template-option">
+                                <input type="radio" name="resumeTemplate" value="classic">
+                                <span class="resume-template-swatch resume-template-swatch-classic"></span>
+                                <span class="resume-template-name">Classic</span>
+                            </label>
+
+                            <label class="resume-template-option">
+                                <input type="radio" name="resumeTemplate" value="minimal">
+                                <span class="resume-template-swatch resume-template-swatch-minimal"></span>
+                                <span class="resume-template-name">Minimal</span>
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-card">
+
+                        <div class="form-card-header">
+
                             <h3>👤 Personal Information</h3>
 
                             <p>Basic contact details shown at the top of your resume.</p>
@@ -3349,6 +3415,15 @@
         <div id="previewSenderMobile"></div>
 
     </div>
+
+</div>
+
+<!-- ==========================================
+        HIDDEN MODERN BIODATA PREVIEW (flowing HTML)
+========================================== -->
+<div class="biodata-modern-preview-container">
+
+    <div id="biodataModernPreview"></div>
 
 </div>
 

@@ -374,3 +374,142 @@ function autoFitAllText() {
 }
 
 
+
+
+/*==========================================================
+        MODERN BIODATA TEMPLATE (flowing HTML alternative)
+==========================================================*/
+
+function escapeBiodataHtml(s) {
+
+    const d = document.createElement("div");
+    d.textContent = s || "";
+    return d.innerHTML;
+
+}
+
+
+function getSelectedBiodataTemplate() {
+
+    const checked = document.querySelector('input[name="biodataTemplate"]:checked');
+    return checked ? checked.value : "classic";
+
+}
+
+
+function bmpRow(label, value) {
+
+    if (!value) return "";
+    return `<tr><td>${escapeBiodataHtml(label)}</td><td>${escapeBiodataHtml(value)}</td></tr>`;
+
+}
+
+
+function renderModernBiodataPreview() {
+
+    const container = document.getElementById("biodataModernPreview");
+
+    if (!container || typeof biodata === "undefined") return;
+
+    const p = biodata.personal || {};
+    const edu = biodata.education || {};
+    const work = biodata.work || {};
+    const fam = biodata.family || {};
+    const partner = biodata.partner || {};
+    const contact = biodata.contact || {};
+
+    const photoUrl = biodata.photos && biodata.photos.profilePhoto
+        ? biodata.photos.profilePhoto.preview
+        : "";
+
+    const blessing = typeof getSelectedHeaderBlessing === "function"
+        ? getSelectedHeaderBlessing()
+        : "|| ॐ गं गणपतये नमः ||";
+
+    const miniLine = [
+        p.dob,
+        p.height,
+        work.profession
+    ].filter(Boolean).map(escapeBiodataHtml).join(" &nbsp;|&nbsp; ");
+
+    let html = `
+        <div class="bmp-header">
+            <div class="bmp-blessing">${escapeBiodataHtml(blessing)}</div>
+            <div class="bmp-title">BIODATA</div>
+            <div class="bmp-divider"></div>
+        </div>
+
+        <div class="bmp-top">
+            ${photoUrl ? `<img class="bmp-photo" src="${photoUrl}">` : `<div class="bmp-photo"></div>`}
+            <div>
+                <div class="bmp-name">${escapeBiodataHtml(p.fullName) || "Full Name"}</div>
+                <div class="bmp-mini">${miniLine}</div>
+            </div>
+        </div>
+
+        <div class="bmp-section">
+            <h3>Personal Details</h3>
+            <table class="bmp-table">
+                ${bmpRow("Date of Birth", p.dob)}
+                ${bmpRow("Time of Birth", p.timeOfBirth)}
+                ${bmpRow("Place of Birth", p.placeOfBirth)}
+                ${bmpRow("Height", p.height)}
+                ${bmpRow("Complexion", p.complexion)}
+                ${bmpRow("Caste", p.caste)}
+                ${bmpRow("Rashi", p.rashi)}
+                ${bmpRow("Gan", p.gan)}
+                ${bmpRow("Manglik Status", p.manglik)}
+                ${bmpRow("Marital Status", p.maritalStatus)}
+                ${bmpRow("Diet", p.diet)}
+                ${bmpRow("Language", p.language)}
+                ${bmpRow("Hobbies", p.hobbies)}
+                ${bmpRow("Other", p.other)}
+            </table>
+        </div>
+
+        <div class="bmp-section">
+            <h3>Education & Career</h3>
+            <table class="bmp-table">
+                ${bmpRow("Qualification", edu.highestQualification)}
+                ${bmpRow("College", edu.college)}
+                ${bmpRow("Profession", work.profession)}
+                ${bmpRow("Organization", work.organization)}
+                ${bmpRow("Work Place", work.workPlace)}
+                ${bmpRow("Income", work.income)}
+            </table>
+        </div>
+
+        <div class="bmp-section">
+            <h3>Family Details</h3>
+            <table class="bmp-table">
+                ${bmpRow("Father's Name", fam.fatherName)}
+                ${bmpRow("Father's Occupation", fam.fatherOccupation)}
+                ${bmpRow("Mother's Name", fam.motherName)}
+                ${bmpRow("Mother's Occupation", fam.motherOccupation)}
+                ${bmpRow("Siblings", fam.siblingsDetails)}
+            </table>
+        </div>
+
+        ${(partner.preferredQualification || partner.preferredProfession || partner.preferredLocation) ? `
+        <div class="bmp-section">
+            <h3>Partner Preference</h3>
+            <table class="bmp-table">
+                ${bmpRow("Qualification", partner.preferredQualification)}
+                ${bmpRow("Profession", partner.preferredProfession)}
+                ${bmpRow("Location", partner.preferredLocation)}
+            </table>
+        </div>` : ""}
+
+        <div class="bmp-section">
+            <h3>Contact Details</h3>
+            <table class="bmp-table">
+                ${bmpRow("Mobile", contact.mobileNumber)}
+                ${bmpRow("Current Address", contact.currentAddress)}
+                ${bmpRow("Permanent Address", contact.permanentAddress)}
+            </table>
+        </div>
+    `;
+
+    container.innerHTML = html;
+
+}

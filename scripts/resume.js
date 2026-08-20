@@ -38,6 +38,17 @@ function openResumeForm() {
 }
 
 
+function initializeResumeTemplatePicker() {
+
+    document.querySelectorAll('input[name="resumeTemplate"]').forEach((radio) => {
+
+        radio.addEventListener("change", renderResumePreview);
+
+    });
+
+}
+
+
 function initializeCreateResumeButton() {
 
     const heroButton = document.getElementById("createResumeBtn");
@@ -276,12 +287,22 @@ function escapeResumeHtml(s) {
 }
 
 
+function getSelectedResumeTemplate() {
+
+    const checked = document.querySelector('input[name="resumeTemplate"]:checked');
+    return checked ? checked.value : "modern";
+
+}
+
+
 function renderResumePreview() {
 
     const data = collectResumeData();
     const container = document.getElementById("resumePreview");
 
     if (!container) return;
+
+    container.className = "resume-template-" + getSelectedResumeTemplate();
 
     const contactBits = [data.phone, data.email, data.location, data.linkedin]
         .filter(Boolean)
@@ -518,6 +539,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initializeResumeStepNavigation();
     initializeResumeRepeatButtons();
     initializeResumeDownloadButton();
+    initializeResumeTemplatePicker();
 
     const navBrand = document.getElementById("navBrandHome");
 
