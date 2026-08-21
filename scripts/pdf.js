@@ -296,7 +296,7 @@ function preparePDF(){
         ? getSelectedBiodataTemplate()
         : "classic";
 
-    if (template === "modern") {
+    if (template !== "classic") {
 
         if (typeof renderModernBiodataPreview === "function") {
 
@@ -347,7 +347,7 @@ async function createCanvasPage1(){
         ? getSelectedBiodataTemplate()
         : "classic";
 
-    const page = template === "modern"
+    const page = template !== "classic"
         ? document.getElementById("biodataModernPreview")
         : getPreviewPage1();
 

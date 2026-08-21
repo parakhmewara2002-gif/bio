@@ -411,6 +411,12 @@ function renderModernBiodataPreview() {
 
     if (!container || typeof biodata === "undefined") return;
 
+    const selectedTemplate = typeof getSelectedBiodataTemplate === "function"
+        ? getSelectedBiodataTemplate()
+        : "modern";
+
+    container.className = "biodata-flow-template-" + selectedTemplate;
+
     const p = biodata.personal || {};
     const edu = biodata.education || {};
     const work = biodata.work || {};

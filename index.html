@@ -1221,12 +1221,6 @@
                             </li>
 
                             <li>
-                                <a href="./pages/refund.html">
-                                    Refund Policy
-                                </a>
-                            </li>
-
-                            <li>
                                 <a href="./pages/contact.html">
                                     Contact Us
                                 </a>
@@ -1332,18 +1326,58 @@
 
                         </div>
 
-                        <div class="resume-template-picker">
+                        <div class="template-gallery">
 
-                            <label class="resume-template-option">
+                            <label class="template-card">
                                 <input type="radio" name="biodataTemplate" value="classic" checked>
-                                <span class="resume-template-swatch biodata-template-swatch-classic"></span>
-                                <span class="resume-template-name">Classic</span>
+                                <span class="template-mockup mockup-biodata-classic">
+                                    <span class="mockup-photo"></span>
+                                    <span class="mockup-line mockup-line-title"></span>
+                                    <span class="mockup-line"></span>
+                                    <span class="mockup-line"></span>
+                                    <span class="mockup-line short"></span>
+                                </span>
+                                <span class="template-name">Classic</span>
+                                <span class="template-desc">Ganesha, gold border</span>
                             </label>
 
-                            <label class="resume-template-option">
+                            <label class="template-card">
                                 <input type="radio" name="biodataTemplate" value="modern">
-                                <span class="resume-template-swatch biodata-template-swatch-modern"></span>
-                                <span class="resume-template-name">Modern</span>
+                                <span class="template-mockup mockup-biodata-modern">
+                                    <span class="mockup-photo"></span>
+                                    <span class="mockup-line mockup-line-title"></span>
+                                    <span class="mockup-line"></span>
+                                    <span class="mockup-line"></span>
+                                    <span class="mockup-line short"></span>
+                                </span>
+                                <span class="template-name">Modern Gold</span>
+                                <span class="template-desc">Elegant, flowing layout</span>
+                            </label>
+
+                            <label class="template-card">
+                                <input type="radio" name="biodataTemplate" value="royal">
+                                <span class="template-mockup mockup-biodata-royal">
+                                    <span class="mockup-photo"></span>
+                                    <span class="mockup-line mockup-line-title"></span>
+                                    <span class="mockup-line"></span>
+                                    <span class="mockup-line"></span>
+                                    <span class="mockup-line short"></span>
+                                </span>
+                                <span class="template-name">Royal Maroon</span>
+                                <span class="template-desc">Deep maroon, ornate serif</span>
+                            </label>
+
+                            <label class="template-card">
+                                <input type="radio" name="biodataTemplate" value="minimal">
+                                <span class="template-mockup mockup-biodata-minimal">
+                                    <span class="mockup-photo"></span>
+                                    <span class="mockup-line mockup-line-title"></span>
+                                    <span class="mockup-line"></span>
+                                    <span class="mockup-line"></span>
+                                    <span class="mockup-line short"></span>
+                                </span>
+                                <span class="template-name">Minimal</span>
+                                <span class="template-desc">Clean, monochrome</span>
                             </label>
 
                         </div>
@@ -2444,6 +2478,10 @@
 
                                     <input type="file" id="profilePhotoUpload" class="form-control" accept="image/*">
 
+                                    <button type="button" id="editPhotoBtn" class="btn btn-outline-secondary btn-sm mt-2 w-100">
+                                        ✂️ Crop / Rotate / Zoom
+                                    </button>
+
                                 </div>
 
                             </div>
@@ -2913,24 +2951,45 @@
 
                         </div>
 
-                        <div class="resume-template-picker">
+                        <div class="template-gallery">
 
-                            <label class="resume-template-option">
+                            <label class="template-card">
                                 <input type="radio" name="resumeTemplate" value="modern" checked>
-                                <span class="resume-template-swatch resume-template-swatch-modern"></span>
-                                <span class="resume-template-name">Modern</span>
+                                <span class="template-mockup mockup-resume-modern">
+                                    <span class="mockup-line mockup-line-title"></span>
+                                    <span class="mockup-line short"></span>
+                                    <span class="mockup-line"></span>
+                                    <span class="mockup-line"></span>
+                                    <span class="mockup-line short"></span>
+                                </span>
+                                <span class="template-name">Modern</span>
+                                <span class="template-desc">Navy blue, clean</span>
                             </label>
 
-                            <label class="resume-template-option">
+                            <label class="template-card">
                                 <input type="radio" name="resumeTemplate" value="classic">
-                                <span class="resume-template-swatch resume-template-swatch-classic"></span>
-                                <span class="resume-template-name">Classic</span>
+                                <span class="template-mockup mockup-resume-classic">
+                                    <span class="mockup-line mockup-line-title"></span>
+                                    <span class="mockup-line short"></span>
+                                    <span class="mockup-line"></span>
+                                    <span class="mockup-line"></span>
+                                    <span class="mockup-line short"></span>
+                                </span>
+                                <span class="template-name">Classic</span>
+                                <span class="template-desc">Serif, black &amp; white</span>
                             </label>
 
-                            <label class="resume-template-option">
+                            <label class="template-card">
                                 <input type="radio" name="resumeTemplate" value="minimal">
-                                <span class="resume-template-swatch resume-template-swatch-minimal"></span>
-                                <span class="resume-template-name">Minimal</span>
+                                <span class="template-mockup mockup-resume-minimal">
+                                    <span class="mockup-line mockup-line-title"></span>
+                                    <span class="mockup-line short"></span>
+                                    <span class="mockup-line"></span>
+                                    <span class="mockup-line"></span>
+                                    <span class="mockup-line short"></span>
+                                </span>
+                                <span class="template-name">Minimal</span>
+                                <span class="template-desc">Green accent, spacious</span>
                             </label>
 
                         </div>
@@ -3189,6 +3248,54 @@
             <hr>
         </div>
     </template>
+
+    <!-- ==========================================================
+                    PHOTO EDITOR MODAL (Crop / Rotate / Zoom)
+    =========================================================== -->
+    <div class="photo-editor-overlay d-none" id="photoEditorOverlay">
+
+        <div class="photo-editor-modal">
+
+            <div class="photo-editor-header">
+                <h4>Adjust Your Photo</h4>
+                <button type="button" class="photo-editor-close" id="photoEditorCloseBtn">&times;</button>
+            </div>
+
+            <div class="photo-editor-stage-wrap">
+
+                <div class="photo-editor-stage" id="photoEditorStage">
+                    <img id="photoEditorImage" alt="Editing" draggable="false">
+                </div>
+
+            </div>
+
+            <div class="photo-editor-controls">
+
+                <div class="photo-editor-frame-picker">
+                    <button type="button" class="photo-frame-btn active" data-frame="rounded">▢ Rounded</button>
+                    <button type="button" class="photo-frame-btn" data-frame="circle">◯ Circle</button>
+                    <button type="button" class="photo-frame-btn" data-frame="square">■ Square</button>
+                </div>
+
+                <label class="photo-editor-label">Zoom</label>
+                <input type="range" id="photoZoomSlider" min="100" max="300" value="100" class="form-range">
+
+                <div class="photo-editor-rotate-row">
+                    <label class="photo-editor-label mb-0">Rotate</label>
+                    <button type="button" class="btn btn-outline-secondary btn-sm" id="photoRotateLeftBtn">⟲ Left</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm" id="photoRotateRightBtn">⟳ Right</button>
+                </div>
+
+            </div>
+
+            <div class="photo-editor-footer">
+                <button type="button" class="btn btn-secondary" id="photoEditorCancelBtn">Cancel</button>
+                <button type="button" class="btn btn-primary" id="photoEditorApplyBtn">Apply</button>
+            </div>
+
+        </div>
+
+    </div>
 
 </main>
 
@@ -3458,6 +3565,8 @@
 <script src="./scripts/preview.js"></script>
 
 <script src="./scripts/gallery.js"></script>
+
+<script src="./scripts/photo-editor.js"></script>
 
 <script src="./scripts/config.js"></script>
 
