@@ -1380,6 +1380,58 @@
                                 <span class="template-desc">Clean, monochrome</span>
                             </label>
 
+                            <label class="template-card">
+                                <input type="radio" name="biodataTemplate" value="elegant">
+                                <span class="template-mockup mockup-biodata-elegant">
+                                    <span class="mockup-photo"></span>
+                                    <span class="mockup-line mockup-line-title"></span>
+                                    <span class="mockup-line"></span>
+                                    <span class="mockup-line"></span>
+                                    <span class="mockup-line short"></span>
+                                </span>
+                                <span class="template-name">Elegant</span>
+                                <span class="template-desc">Blush rose, soft serif</span>
+                            </label>
+
+                            <label class="template-card">
+                                <input type="radio" name="biodataTemplate" value="traditional">
+                                <span class="template-mockup mockup-biodata-traditional">
+                                    <span class="mockup-photo"></span>
+                                    <span class="mockup-line mockup-line-title"></span>
+                                    <span class="mockup-line"></span>
+                                    <span class="mockup-line"></span>
+                                    <span class="mockup-line short"></span>
+                                </span>
+                                <span class="template-name">Traditional</span>
+                                <span class="template-desc">Deep green &amp; gold</span>
+                            </label>
+
+                            <label class="template-card">
+                                <input type="radio" name="biodataTemplate" value="floral">
+                                <span class="template-mockup mockup-biodata-floral">
+                                    <span class="mockup-photo"></span>
+                                    <span class="mockup-line mockup-line-title"></span>
+                                    <span class="mockup-line"></span>
+                                    <span class="mockup-line"></span>
+                                    <span class="mockup-line short"></span>
+                                </span>
+                                <span class="template-name">Floral</span>
+                                <span class="template-desc">Soft pink &amp; lavender</span>
+                            </label>
+
+                            <label class="template-card">
+                                <input type="radio" name="biodataTemplate" value="premium">
+                                <span class="template-mockup mockup-biodata-premium">
+                                    <span class="mockup-photo"></span>
+                                    <span class="mockup-line mockup-line-title"></span>
+                                    <span class="mockup-line"></span>
+                                    <span class="mockup-line"></span>
+                                    <span class="mockup-line short"></span>
+                                </span>
+                                <span class="template-name">Premium Gold</span>
+                                <span class="template-desc">Black &amp; gold luxury</span>
+                            </label>
+
                         </div>
 
                     </div>
@@ -2858,7 +2910,35 @@
 
                                 </button>
 
+                                <!-- Export Draft -->
+
+                                <button type="button" id="exportDraftBtn" class="btn btn-outline-secondary">
+
+                                    <i class="fa-solid fa-download me-2"></i>
+
+                                    Export Draft
+
+                                </button>
+
+                                <!-- Import Draft -->
+
+                                <label class="btn btn-outline-secondary mb-0" for="importDraftInput">
+
+                                    <i class="fa-solid fa-upload me-2"></i>
+
+                                    Import Draft
+
+                                </label>
+
+                                <input type="file" id="importDraftInput" accept="application/json" class="d-none">
+
                             </div>
+
+                            <p class="text-center text-muted mt-2" style="font-size:12.5px;">
+
+                                Your draft is saved only in this browser. Export it as a backup file, or import it later on this or another device.
+
+                            </p>
 
                             <!-- ======================================
                                     PDF ACTIONS
@@ -2992,6 +3072,45 @@
                                 <span class="template-desc">Green accent, spacious</span>
                             </label>
 
+                            <label class="template-card">
+                                <input type="radio" name="resumeTemplate" value="executive">
+                                <span class="template-mockup mockup-resume-executive">
+                                    <span class="mockup-line mockup-line-title"></span>
+                                    <span class="mockup-line short"></span>
+                                    <span class="mockup-line"></span>
+                                    <span class="mockup-line"></span>
+                                    <span class="mockup-line short"></span>
+                                </span>
+                                <span class="template-name">Executive</span>
+                                <span class="template-desc">Bold serif, formal</span>
+                            </label>
+
+                            <label class="template-card">
+                                <input type="radio" name="resumeTemplate" value="creative">
+                                <span class="template-mockup mockup-resume-creative">
+                                    <span class="mockup-line mockup-line-title"></span>
+                                    <span class="mockup-line short"></span>
+                                    <span class="mockup-line"></span>
+                                    <span class="mockup-line"></span>
+                                    <span class="mockup-line short"></span>
+                                </span>
+                                <span class="template-name">Creative</span>
+                                <span class="template-desc">Purple &amp; orange gradient</span>
+                            </label>
+
+                            <label class="template-card">
+                                <input type="radio" name="resumeTemplate" value="developer">
+                                <span class="template-mockup mockup-resume-developer">
+                                    <span class="mockup-line mockup-line-title"></span>
+                                    <span class="mockup-line short"></span>
+                                    <span class="mockup-line"></span>
+                                    <span class="mockup-line"></span>
+                                    <span class="mockup-line short"></span>
+                                </span>
+                                <span class="template-name">Developer</span>
+                                <span class="template-desc">Dark mode, monospace</span>
+                            </label>
+
                         </div>
 
                     </div>
@@ -3113,6 +3232,16 @@
                                 <input type="text" id="resumeSkills" class="form-control" maxlength="250" placeholder="e.g. Python, Excel, Communication, Project Management">
                             </div>
 
+                            <div class="col-md-6">
+                                <label class="form-label">Languages Known (optional)</label>
+                                <input type="text" id="resumeLanguages" class="form-control" maxlength="150" placeholder="e.g. English, Hindi, Spanish">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Hobbies / Interests (optional)</label>
+                                <input type="text" id="resumeHobbies" class="form-control" maxlength="150" placeholder="e.g. Reading, Chess, Photography">
+                            </div>
+
                             <div class="col-12">
                                 <label class="form-label">Projects (optional)</label>
                                 <textarea id="resumeProjects" class="form-control" rows="3" maxlength="400" placeholder="Project Name — one-line description (one per line)"></textarea>
@@ -3123,7 +3252,35 @@
                                 <textarea id="resumeCertifications" class="form-control" rows="2" maxlength="250" placeholder="Certification name — Issuer, Year (one per line)"></textarea>
                             </div>
 
+                            <div class="col-12">
+                                <label class="form-label">Achievements (optional)</label>
+                                <textarea id="resumeAchievements" class="form-control" rows="2" maxlength="250" placeholder="e.g. Won XYZ award, Ranked top 5% in ABC (one per line)"></textarea>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">References (optional)</label>
+                                <textarea id="resumeReferences" class="form-control" rows="2" maxlength="250" placeholder="Name — Designation, Company, Contact (one per line), or 'Available upon request'"></textarea>
+                            </div>
+
                         </div>
+
+                    </div>
+
+                    <div class="form-card">
+
+                        <div class="form-card-header">
+
+                            <h3>➕ Custom Sections</h3>
+
+                            <p>Add any extra section your resume needs (e.g. Publications, Volunteering).</p>
+
+                        </div>
+
+                        <div id="resumeCustomList"></div>
+
+                        <button type="button" id="resumeAddCustom" class="btn btn-outline-secondary btn-sm mt-2">
+                            + Add Custom Section
+                        </button>
 
                     </div>
 
@@ -3243,6 +3400,25 @@
                 <div class="col-12">
                     <label class="form-label">Description</label>
                     <textarea class="form-control resume-exp-description" rows="2" maxlength="300" placeholder="One or two lines about your responsibilities/achievements"></textarea>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </template>
+
+    <template id="resumeCustomSectionTemplate">
+        <div class="resume-repeat-block">
+            <div class="row g-3">
+                <div class="col-md-8">
+                    <label class="form-label">Section Title</label>
+                    <input type="text" class="form-control resume-custom-title" maxlength="40" placeholder="e.g. Publications, Volunteering">
+                </div>
+                <div class="col-md-4 d-flex align-items-end">
+                    <button type="button" class="btn btn-outline-danger btn-sm w-100 resume-remove-block">Remove</button>
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Content</label>
+                    <textarea class="form-control resume-custom-content" rows="3" maxlength="400" placeholder="One line per item"></textarea>
                 </div>
             </div>
             <hr>

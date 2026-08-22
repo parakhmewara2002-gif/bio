@@ -183,6 +183,7 @@ function initializeResumeRepeatButtons() {
 
     const addEduBtn = document.getElementById("resumeAddEducation");
     const addExpBtn = document.getElementById("resumeAddExperience");
+    const addCustomBtn = document.getElementById("resumeAddCustom");
 
     if (addEduBtn) {
 
@@ -206,6 +207,16 @@ function initializeResumeRepeatButtons() {
         });
 
         addResumeRepeatRow("resumeExperienceTemplate", "resumeExperienceList");
+
+    }
+
+    if (addCustomBtn) {
+
+        addCustomBtn.addEventListener("click", () => {
+
+            addResumeRepeatRow("resumeCustomSectionTemplate", "resumeCustomList");
+
+        });
 
     }
 
@@ -257,6 +268,21 @@ function collectResumeData() {
 
     });
 
+    const customSections = [];
+
+    document.querySelectorAll("#resumeCustomList .resume-repeat-block").forEach((block) => {
+
+        const title = block.querySelector(".resume-custom-title").value.trim();
+        const content = block.querySelector(".resume-custom-content").value.trim();
+
+        if (title || content) {
+
+            customSections.push({ title, content });
+
+        }
+
+    });
+
     return {
         fullName: val("resumeFullName"),
         email: val("resumeEmail"),
@@ -267,8 +293,13 @@ function collectResumeData() {
         education,
         experience,
         skills: val("resumeSkills"),
+        languages: val("resumeLanguages"),
+        hobbies: val("resumeHobbies"),
         projects: val("resumeProjects"),
-        certifications: val("resumeCertifications")
+        certifications: val("resumeCertifications"),
+        achievements: val("resumeAchievements"),
+        references: val("resumeReferences"),
+        customSections
     };
 
 }
@@ -390,6 +421,21 @@ function renderResumePreview() {
 
     }
 
+    if (data.languages) {
+
+        const langTags = data.languages.split(",").map(s => s.trim()).filter(Boolean);
+
+        html += `
+            <div class="resume-section">
+                <h2>Languages</h2>
+                <div class="resume-skill-tags">
+                    ${langTags.map(s => `<span>${escapeResumeHtml(s)}</span>`).join("")}
+                </div>
+            </div>
+        `;
+
+    }
+
     if (data.projects) {
 
         html += `
@@ -407,6 +453,52 @@ function renderResumePreview() {
             <div class="resume-section">
                 <h2>Certifications</h2>
                 <p style="white-space:pre-line;">${escapeResumeHtml(data.certifications)}</p>
+            </div>
+        `;
+
+    }
+
+    if (data.achievements) {
+
+        html += `
+            <div class="resume-section">
+                <h2>Achievements</h2>
+                <p style="white-space:pre-line;">${escapeResumeHtml(data.achievements)}</p>
+            </div>
+        `;
+
+    }
+
+    data.customSections.forEach((sec) => {
+
+        if (!sec.title && !sec.content) return;
+
+        html += `
+            <div class="resume-section">
+                <h2>${escapeResumeHtml(sec.title || "Additional Information")}</h2>
+                <p style="white-space:pre-line;">${escapeResumeHtml(sec.content)}</p>
+            </div>
+        `;
+
+    });
+
+    if (data.hobbies) {
+
+        html += `
+            <div class="resume-section">
+                <h2>Hobbies &amp; Interests</h2>
+                <p>${escapeResumeHtml(data.hobbies)}</p>
+            </div>
+        `;
+
+    }
+
+    if (data.references) {
+
+        html += `
+            <div class="resume-section">
+                <h2>References</h2>
+                <p style="white-space:pre-line;">${escapeResumeHtml(data.references)}</p>
             </div>
         `;
 

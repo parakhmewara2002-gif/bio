@@ -3671,3 +3671,275 @@ textarea.is-valid:focus{
     padding: 14px 20px 20px;
 
 }
+
+
+/*==========================================================
+        BIODATA TEMPLATE: ELEGANT (blush rose + charcoal)
+==========================================================*/
+
+.biodata-flow-template-elegant{
+
+    font-family: 'Playfair Display', 'Georgia', serif;
+    background: #fdf7f6;
+
+}
+
+.biodata-flow-template-elegant::before{ border-color: #c98a94 !important; }
+.biodata-flow-template-elegant::after{ border-color: #e8c3c9 !important; }
+
+.biodata-flow-template-elegant .bmp-blessing{ color: #a65b66; }
+
+.biodata-flow-template-elegant .bmp-title,
+.biodata-flow-template-elegant .bmp-name,
+.biodata-flow-template-elegant .bmp-section h3{ color: #6e3a42; }
+
+.biodata-flow-template-elegant .bmp-divider{
+    background: linear-gradient(90deg, transparent, #c98a94, transparent);
+}
+
+.biodata-flow-template-elegant .bmp-section h3::before{ background: #c98a94; }
+.biodata-flow-template-elegant .bmp-photo{ border-color: #c98a94; }
+
+
+/*==========================================================
+        BIODATA TEMPLATE: TRADITIONAL (deep green + gold)
+==========================================================*/
+
+.biodata-flow-template-traditional{
+
+    font-family: 'Playfair Display', 'Georgia', serif;
+    background: #f7faf6;
+
+}
+
+.biodata-flow-template-traditional::before{ border-color: #2f5233 !important; }
+.biodata-flow-template-traditional::after{ border-color: #c9a545 !important; }
+
+.biodata-flow-template-traditional .bmp-blessing{ color: #2f5233; }
+
+.biodata-flow-template-traditional .bmp-title,
+.biodata-flow-template-traditional .bmp-name,
+.biodata-flow-template-traditional .bmp-section h3{ color: #1f3722; }
+
+.biodata-flow-template-traditional .bmp-divider{
+    background: linear-gradient(90deg, transparent, #c9a545, transparent);
+}
+
+.biodata-flow-template-traditional .bmp-section h3::before{ background: #c9a545; }
+.biodata-flow-template-traditional .bmp-photo{ border-color: #2f5233; }
+
+
+/*==========================================================
+        BIODATA TEMPLATE: FLORAL (soft pink/lavender)
+==========================================================*/
+
+.biodata-flow-template-floral{
+
+    font-family: 'Playfair Display', 'Georgia', serif;
+    background: #fdf9fc;
+
+}
+
+.biodata-flow-template-floral::before{ border-color: #b088c9 !important; }
+.biodata-flow-template-floral::after{ border-color: #e6d3ef !important; }
+
+.biodata-flow-template-floral .bmp-blessing{ color: #8a5aa3; }
+
+.biodata-flow-template-floral .bmp-title,
+.biodata-flow-template-floral .bmp-name,
+.biodata-flow-template-floral .bmp-section h3{ color: #6b3d80; }
+
+.biodata-flow-template-floral .bmp-divider{
+    background: linear-gradient(90deg, transparent, #b088c9, transparent);
+}
+
+.biodata-flow-template-floral .bmp-section h3::before{ background: #d9a8e8; }
+.biodata-flow-template-floral .bmp-photo{ border-color: #b088c9; border-radius: 50%; }
+
+
+/*==========================================================
+        BIODATA TEMPLATE: PREMIUM GOLD (black + gold luxury)
+==========================================================*/
+
+.biodata-flow-template-premium{
+
+    font-family: 'Playfair Display', 'Georgia', serif;
+    background: #ffffff;
+
+}
+
+.biodata-flow-template-premium::before{ border-color: #1a1a1a !important; border-width: 1px !important; }
+.biodata-flow-template-premium::after{ border-color: #c9a227 !important; }
+
+.biodata-flow-template-premium .bmp-blessing{ color: #c9a227; letter-spacing: 1px; }
+
+.biodata-flow-template-premium .bmp-title,
+.biodata-flow-template-premium .bmp-name{ color: #1a1a1a; letter-spacing: 1px; }
+
+.biodata-flow-template-premium .bmp-section h3{ color: #1a1a1a; text-transform: uppercase; letter-spacing: 1.5px; font-size: 14px; }
+
+.biodata-flow-template-premium .bmp-divider{
+    background: linear-gradient(90deg, transparent, #c9a227, transparent);
+}
+
+.biodata-flow-template-premium .bmp-section h3::before{ background: #c9a227; border-radius: 0; }
+.biodata-flow-template-premium .bmp-photo{ border-color: #c9a227; border-radius: 0; }
+
+
+/*==========================================================
+        RESUME TEMPLATE: EXECUTIVE (charcoal, bold serif)
+==========================================================*/
+
+#resumePreview.resume-template-executive{
+
+    font-family: 'Georgia', serif;
+    color: #1a1a1a;
+
+}
+
+#resumePreview.resume-template-executive .resume-header{
+    border-bottom: 4px double #1a1a1a;
+    text-align: center;
+}
+
+#resumePreview.resume-template-executive .resume-header h1{
+    font-family: 'Georgia', serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 26px;
+    color: #1a1a1a;
+}
+
+#resumePreview.resume-template-executive .resume-section h2{
+    font-family: 'Georgia', serif;
+    color: #1a1a1a;
+    text-align: center;
+    border-bottom: 1px solid #1a1a1a;
+    letter-spacing: 2px;
+    font-size: 13px;
+}
+
+#resumePreview.resume-template-executive .resume-entry-top strong{ color: #1a1a1a; }
+
+#resumePreview.resume-template-executive .resume-skill-tags span{
+    background: #1a1a1a;
+    color: #fff;
+    border-radius: 2px;
+}
+
+
+/*==========================================================
+        RESUME TEMPLATE: CREATIVE (purple/orange accent)
+==========================================================*/
+
+#resumePreview.resume-template-creative{
+
+    font-family: 'Segoe UI', Arial, sans-serif;
+
+}
+
+#resumePreview.resume-template-creative .resume-header{
+    background: linear-gradient(135deg, #7b2ff7, #f6a03d);
+    color: #fff;
+    border-bottom: none;
+    border-radius: 10px;
+    padding: 20px;
+    margin: -42px -44px 20px;
+    width: calc(100% + 88px);
+}
+
+#resumePreview.resume-template-creative .resume-header h1{ color: #fff; }
+#resumePreview.resume-template-creative .resume-contact{ color: #f5f0ff; }
+
+#resumePreview.resume-template-creative .resume-section h2{
+    color: #7b2ff7;
+    border-bottom: 2px solid #f6a03d;
+}
+
+#resumePreview.resume-template-creative .resume-entry-top strong{ color: #7b2ff7; }
+
+#resumePreview.resume-template-creative .resume-skill-tags span{
+    background: linear-gradient(135deg, #7b2ff7, #f6a03d);
+    color: #fff;
+}
+
+
+/*==========================================================
+        RESUME TEMPLATE: DEVELOPER (dark, monospace accents)
+==========================================================*/
+
+#resumePreview.resume-template-developer{
+
+    font-family: 'Consolas', 'Courier New', monospace;
+    background: #1e1e2e;
+    color: #cdd6f4;
+
+}
+
+#resumePreview.resume-template-developer .resume-header{
+    border-bottom: 2px solid #89b4fa;
+}
+
+#resumePreview.resume-template-developer .resume-header h1{
+    color: #89b4fa;
+}
+
+#resumePreview.resume-template-developer .resume-header h1::before{
+    content: "> ";
+    color: #a6e3a1;
+}
+
+#resumePreview.resume-template-developer .resume-contact{ color: #a6adc8; }
+
+#resumePreview.resume-template-developer .resume-section h2{
+    color: #a6e3a1;
+    border-bottom-color: #45475a;
+}
+
+#resumePreview.resume-template-developer .resume-section p,
+#resumePreview.resume-template-developer .resume-entry-sub{ color: #bac2de; }
+
+#resumePreview.resume-template-developer .resume-entry-top strong{ color: #f9e2af; }
+#resumePreview.resume-template-developer .resume-entry-top span{ color: #6c7086; }
+
+#resumePreview.resume-template-developer .resume-skill-tags span{
+    background: #313244;
+    color: #89b4fa;
+    border-radius: 4px;
+    font-family: 'Consolas', monospace;
+}
+
+
+/* ---- new mockup color schemes ---- */
+
+.mockup-biodata-elegant{ background: #fdf7f6; border: 2px solid #c98a94; }
+.mockup-biodata-elegant .mockup-photo{ background: #6e3a42; }
+.mockup-biodata-elegant .mockup-line{ background: #e8c3c9; }
+.mockup-biodata-elegant .mockup-line-title{ background: #6e3a42; }
+
+.mockup-biodata-traditional{ background: #f7faf6; border: 2px solid #2f5233; }
+.mockup-biodata-traditional .mockup-photo{ background: #2f5233; }
+.mockup-biodata-traditional .mockup-line{ background: #c9a545; }
+.mockup-biodata-traditional .mockup-line-title{ background: #1f3722; }
+
+.mockup-biodata-floral{ background: #fdf9fc; border: 2px solid #b088c9; }
+.mockup-biodata-floral .mockup-photo{ background: #8a5aa3; border-radius:50%; }
+.mockup-biodata-floral .mockup-line{ background: #e6d3ef; }
+.mockup-biodata-floral .mockup-line-title{ background: #6b3d80; }
+
+.mockup-biodata-premium{ background: #ffffff; border: 1px solid #1a1a1a; }
+.mockup-biodata-premium .mockup-photo{ background: #1a1a1a; border-radius:0; }
+.mockup-biodata-premium .mockup-line{ background: #c9a227; }
+.mockup-biodata-premium .mockup-line-title{ background: #1a1a1a; }
+
+.mockup-resume-executive{ background: #ffffff; border: 2px double #1a1a1a; }
+.mockup-resume-executive .mockup-line-title{ background: #1a1a1a; }
+.mockup-resume-executive .mockup-line{ background: #1a1a1a; opacity: .5; }
+
+.mockup-resume-creative{ background: linear-gradient(135deg, #7b2ff7, #f6a03d); border: none; }
+.mockup-resume-creative .mockup-line-title{ background: #fff; }
+.mockup-resume-creative .mockup-line{ background: #fff; opacity: .8; }
+
+.mockup-resume-developer{ background: #1e1e2e; border: 1px solid #313244; }
+.mockup-resume-developer .mockup-line-title{ background: #89b4fa; }
+.mockup-resume-developer .mockup-line{ background: #a6e3a1; opacity: .7; }
