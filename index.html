@@ -60,6 +60,8 @@
 
     <link rel="icon" type="image/png" href="./images/logo.png">
 
+    <link rel="manifest" href="./manifest.json">
+
     <link rel="apple-touch-icon" href="./images/logo.png">
 
 
@@ -2530,7 +2532,7 @@
 
                                     <input type="file" id="profilePhotoUpload" class="form-control" accept="image/*">
 
-                                    <button type="button" id="editPhotoBtn" class="btn btn-outline-secondary btn-sm mt-2 w-100">
+                                    <button type="button" id="editPhotoBtn" class="btn btn-outline-secondary btn-sm mt-2 w-100" aria-label="Crop, rotate, or zoom your photo">
                                         ✂️ Crop / Rotate / Zoom
                                     </button>
 
@@ -3428,13 +3430,35 @@
     <!-- ==========================================================
                     PHOTO EDITOR MODAL (Crop / Rotate / Zoom)
     =========================================================== -->
+    <!-- ==========================================================
+                    MOBILE FLOATING PREVIEW BUTTON + MODAL
+    =========================================================== -->
+    <button type="button" id="mobilePreviewFab" class="mobile-preview-fab d-none" aria-label="Open live preview">
+        👁 Preview
+    </button>
+
+    <div class="mobile-preview-overlay d-none" id="mobilePreviewOverlay">
+
+        <div class="mobile-preview-modal">
+
+            <div class="mobile-preview-header">
+                <h4>Live Preview</h4>
+                <button type="button" class="photo-editor-close" id="mobilePreviewCloseBtn" aria-label="Close preview">&times;</button>
+            </div>
+
+            <div class="mobile-preview-body" id="mobilePreviewBody"></div>
+
+        </div>
+
+    </div>
+
     <div class="photo-editor-overlay d-none" id="photoEditorOverlay">
 
         <div class="photo-editor-modal">
 
             <div class="photo-editor-header">
                 <h4>Adjust Your Photo</h4>
-                <button type="button" class="photo-editor-close" id="photoEditorCloseBtn">&times;</button>
+                <button type="button" class="photo-editor-close" id="photoEditorCloseBtn" aria-label="Close photo editor">&times;</button>
             </div>
 
             <div class="photo-editor-stage-wrap">
@@ -3458,8 +3482,8 @@
 
                 <div class="photo-editor-rotate-row">
                     <label class="photo-editor-label mb-0">Rotate</label>
-                    <button type="button" class="btn btn-outline-secondary btn-sm" id="photoRotateLeftBtn">⟲ Left</button>
-                    <button type="button" class="btn btn-outline-secondary btn-sm" id="photoRotateRightBtn">⟳ Right</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm" id="photoRotateLeftBtn" aria-label="Rotate photo left 90 degrees">⟲ Left</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm" id="photoRotateRightBtn" aria-label="Rotate photo right 90 degrees">⟳ Right</button>
                 </div>
 
             </div>
@@ -3751,7 +3775,19 @@
 
 <script src="./scripts/resume.js"></script>
 
+<script src="./scripts/mobile-preview.js"></script>
+
 <script src="./scripts/app.js"></script>
+
+<script>
+    if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+            navigator.serviceWorker.register("./service-worker.js").catch(() => {
+                // offline support is a progressive enhancement — fail silently
+            });
+        });
+    }
+</script>
 
 
 
