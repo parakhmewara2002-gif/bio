@@ -38,7 +38,7 @@ function mpUpdateFabVisibility() {
 }
 
 
-function mpBuildScaledClone(sourceEl, naturalWidth) {
+function mpBuildScaledClone(sourceEl, naturalWidth, bodyId) {
 
     const wrap = document.createElement("div");
     wrap.className = "scaled-preview-wrap";
@@ -55,7 +55,7 @@ function mpBuildScaledClone(sourceEl, naturalWidth) {
 
     wrap.appendChild(clone);
 
-    const bodyWidth = document.getElementById("mobilePreviewBody").clientWidth - 32;
+    const bodyWidth = document.getElementById(bodyId || "mobilePreviewBody").clientWidth - 32;
     const scale = Math.min(1, bodyWidth / naturalWidth);
 
     wrap.style.width = naturalWidth + "px";
@@ -163,3 +163,161 @@ function initializeMobilePreview() {
 
 
 document.addEventListener("DOMContentLoaded", initializeMobilePreview);
+
+
+/*==========================================================
+        DESKTOP LIVE PREVIEW PANEL (resizable side panel)
+==========================================================*/
+
+let dpRenderTimer = null;
+
+
+function dpUpdatePanelVisibility() {
+
+    const panel = document.getElementById("desktopPreviewPanel");
+
+    if (!panel) return;
+
+    const active = mpGetActiveFormSection();
+
+    panel.classList.toggle("d-none", !active);
+    document.body.classList.toggle("has-desktop-preview", !!active);
+
+    if (active) dpRenderPreview();
+
+}
+
+
+function dpRenderPreview() {
+
+    const body = document.getElementById("desktopPreviewBody");
+
+    if (!body) return;
+
+    const active = mpGetActiveFormSection();
+
+    body.innerHTML = "";
+
+    if (active === "biodata") {
+
+        const template = typeof getSelectedBiodataTemplate === "function"
+            ? getSelectedBiodataTemplate()
+            : "classic";
+
+        if (template === "classic") {
+
+            if (typeof renderPreviewContainer === "function") renderPreviewContainer();
+
+            const page = document.querySelector(".preview-page");
+
+            if (page) body.appendChild(mpBuildScaledClone(page, MOBILE_PREVIEW_WIDTHS.classic, "desktopPreviewBody"));
+
+        } else {
+
+            if (typeof renderModernBiodataPreview === "function") renderModernBiodataPreview();
+
+            const page = document.getElementById("biodataModernPreview");
+
+            if (page) body.appendChild(mpBuildScaledClone(page, MOBILE_PREVIEW_WIDTHS.flowing, "desktopPreviewBody"));
+
+        }
+
+    } else if (active === "resume") {
+
+        if (typeof renderResumePreview === "function") renderResumePreview();
+
+        const page = document.getElementById("resumePreview");
+
+        if (page) body.appendChild(mpBuildScaledClone(page, MOBILE_PREVIEW_WIDTHS.resume, "desktopPreviewBody"));
+
+    }
+
+}
+
+
+function dpScheduleRender() {
+
+    clearTimeout(dpRenderTimer);
+    dpRenderTimer = setTimeout(dpRenderPreview, 400);
+
+}
+
+
+function dpInitResizeHandle() {
+
+    const handle = document.getElementById("desktopPreviewResizeHandle");
+    const panel = document.getElementById("desktopPreviewPanel");
+
+    if (!handle || !panel) return;
+
+    let dragging = false;
+
+    handle.addEventListener("pointerdown", (e) => {
+
+        dragging = true;
+        handle.classList.add("dragging");
+        handle.setPointerCapture(e.pointerId);
+
+    });
+
+    handle.addEventListener("pointermove", (e) => {
+
+        if (!dragging) return;
+
+        const newWidth = Math.min(640, Math.max(280, window.innerWidth - e.clientX));
+
+        panel.style.width = newWidth + "px";
+        document.body.style.setProperty("--preview-panel-width", newWidth + "px");
+
+    });
+
+    ["pointerup", "pointercancel"].forEach((evt) => {
+
+        handle.addEventListener(evt, () => {
+
+            dragging = false;
+            handle.classList.remove("dragging");
+
+        });
+
+    });
+
+}
+
+
+function dpInitCollapseToggle() {
+
+    const btn = document.getElementById("desktopPreviewToggleBtn");
+
+    if (!btn) return;
+
+    btn.addEventListener("click", () => {
+
+        const collapsed = document.body.classList.toggle("desktop-preview-collapsed");
+
+        btn.textContent = collapsed ? "⟨" : "⟩";
+        btn.setAttribute("aria-label", collapsed ? "Expand live preview" : "Collapse live preview");
+
+    });
+
+}
+
+
+function initializeDesktopPreview() {
+
+    dpInitResizeHandle();
+    dpInitCollapseToggle();
+
+    // re-check visibility + re-render whenever the user interacts with the page
+    // (covers step navigation, template switches, and typing in form fields)
+    document.body.addEventListener("input", dpScheduleRender);
+    document.body.addEventListener("change", dpScheduleRender);
+    document.body.addEventListener("click", () => setTimeout(dpUpdatePanelVisibility, 60));
+
+    dpUpdatePanelVisibility();
+
+}
+
+
+document.addEventListener("DOMContentLoaded", initializeDesktopPreview);
+

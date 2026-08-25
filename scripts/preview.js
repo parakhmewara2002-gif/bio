@@ -518,4 +518,6 @@ function renderModernBiodataPreview() {
 
     container.innerHTML = html;
 
+    if (typeof applyBiodataCustomization === "function") applyBiodataCustomization();
+
 }

@@ -506,6 +506,8 @@ function renderResumePreview() {
 
     container.innerHTML = html;
 
+    if (typeof applyResumeCustomization === "function") applyResumeCustomization();
+
 }
 
 
