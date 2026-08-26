@@ -209,7 +209,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
     initializeToast();
 
+    initializeLearnMoreButton();
+
 });
+
+
+/*==========================================================
+                LEARN MORE BUTTON
+==========================================================*/
+
+function initializeLearnMoreButton(){
+
+    const button = document.getElementById("learnMoreBtn");
+
+    if(!button){
+
+        return;
+
+    }
+
+    button.addEventListener("click", () => {
+
+        const target = document.getElementById("features");
+
+        if(target){
+
+            target.scrollIntoView({ behavior: "smooth" });
+
+        }
+
+    });
+
+}
 
 
 /*==========================================================
