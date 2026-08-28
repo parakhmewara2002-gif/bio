@@ -179,6 +179,59 @@ function addResumeRepeatRow(templateId, listId) {
 }
 
 
+/*==========================================================
+                RESUME SECTION REORDERING
+==========================================================*/
+
+function renderResumeSectionOrderList() {
+
+    const list = document.getElementById("resumeSectionOrderList");
+
+    if (!list) return;
+
+    list.innerHTML = "";
+
+    RESUME_SECTION_ORDER.forEach((key, index) => {
+
+        const li = document.createElement("li");
+        li.className = "resume-section-order-item";
+
+        li.innerHTML = `
+            <span>${RESUME_SECTION_LABELS[key] || key}</span>
+            <span class="resume-section-order-buttons">
+                <button type="button" class="resume-order-btn" data-dir="up" data-index="${index}" ${index === 0 ? "disabled" : ""} aria-label="Move ${RESUME_SECTION_LABELS[key]} up">↑</button>
+                <button type="button" class="resume-order-btn" data-dir="down" data-index="${index}" ${index === RESUME_SECTION_ORDER.length - 1 ? "disabled" : ""} aria-label="Move ${RESUME_SECTION_LABELS[key]} down">↓</button>
+            </span>
+        `;
+
+        list.appendChild(li);
+
+    });
+
+    list.querySelectorAll(".resume-order-btn").forEach((btn) => {
+
+        btn.addEventListener("click", () => {
+
+            const index = parseInt(btn.dataset.index, 10);
+            const dir = btn.dataset.dir;
+            const swapWith = dir === "up" ? index - 1 : index + 1;
+
+            if (swapWith < 0 || swapWith >= RESUME_SECTION_ORDER.length) return;
+
+            const temp = RESUME_SECTION_ORDER[index];
+            RESUME_SECTION_ORDER[index] = RESUME_SECTION_ORDER[swapWith];
+            RESUME_SECTION_ORDER[swapWith] = temp;
+
+            renderResumeSectionOrderList();
+            renderResumePreview();
+
+        });
+
+    });
+
+}
+
+
 function initializeResumeRepeatButtons() {
 
     const addEduBtn = document.getElementById("resumeAddEducation");
@@ -326,6 +379,27 @@ function getSelectedResumeTemplate() {
 }
 
 
+const RESUME_SECTION_LABELS = {
+    summary: "Professional Summary",
+    experience: "Work Experience",
+    education: "Education",
+    skills: "Skills",
+    languages: "Languages",
+    projects: "Projects",
+    certifications: "Certifications",
+    achievements: "Achievements",
+    custom: "Custom Sections",
+    hobbies: "Hobbies & Interests",
+    references: "References"
+};
+
+let RESUME_SECTION_ORDER = [
+    "summary", "experience", "education", "skills",
+    "languages", "projects", "certifications",
+    "achievements", "custom", "hobbies", "references"
+];
+
+
 function renderResumePreview() {
 
     const data = collectResumeData();
@@ -347,24 +421,22 @@ function renderResumePreview() {
         </div>
     `;
 
-    if (data.summary) {
+    const sectionsHtml = {};
 
-        html += `
-            <div class="resume-section">
-                <h2>Professional Summary</h2>
-                <p>${escapeResumeHtml(data.summary)}</p>
-            </div>
-        `;
+    sectionsHtml.summary = data.summary ? `
+        <div class="resume-section">
+            <h2>${RESUME_SECTION_LABELS.summary}</h2>
+            <p>${escapeResumeHtml(data.summary)}</p>
+        </div>
+    ` : "";
 
-    }
+    sectionsHtml.experience = data.experience.length ? (() => {
 
-    if (data.experience.length) {
-
-        html += `<div class="resume-section"><h2>Work Experience</h2>`;
+        let block = `<div class="resume-section"><h2>${RESUME_SECTION_LABELS.experience}</h2>`;
 
         data.experience.forEach((e) => {
 
-            html += `
+            block += `
                 <div class="resume-entry">
                     <div class="resume-entry-top">
                         <strong>${escapeResumeHtml(e.title || "")}</strong>
@@ -377,17 +449,17 @@ function renderResumePreview() {
 
         });
 
-        html += `</div>`;
+        return block + `</div>`;
 
-    }
+    })() : "";
 
-    if (data.education.length) {
+    sectionsHtml.education = data.education.length ? (() => {
 
-        html += `<div class="resume-section"><h2>Education</h2>`;
+        let block = `<div class="resume-section"><h2>${RESUME_SECTION_LABELS.education}</h2>`;
 
         data.education.forEach((e) => {
 
-            html += `
+            block += `
                 <div class="resume-entry">
                     <div class="resume-entry-top">
                         <strong>${escapeResumeHtml(e.degree || "")}</strong>
@@ -402,107 +474,81 @@ function renderResumePreview() {
 
         });
 
-        html += `</div>`;
+        return block + `</div>`;
 
-    }
+    })() : "";
 
-    if (data.skills) {
-
-        const skillTags = data.skills.split(",").map(s => s.trim()).filter(Boolean);
-
-        html += `
-            <div class="resume-section">
-                <h2>Skills</h2>
-                <div class="resume-skill-tags">
-                    ${skillTags.map(s => `<span>${escapeResumeHtml(s)}</span>`).join("")}
-                </div>
+    sectionsHtml.skills = data.skills ? `
+        <div class="resume-section">
+            <h2>${RESUME_SECTION_LABELS.skills}</h2>
+            <div class="resume-skill-tags">
+                ${data.skills.split(",").map(s => s.trim()).filter(Boolean).map(s => `<span>${escapeResumeHtml(s)}</span>`).join("")}
             </div>
-        `;
+        </div>
+    ` : "";
 
-    }
-
-    if (data.languages) {
-
-        const langTags = data.languages.split(",").map(s => s.trim()).filter(Boolean);
-
-        html += `
-            <div class="resume-section">
-                <h2>Languages</h2>
-                <div class="resume-skill-tags">
-                    ${langTags.map(s => `<span>${escapeResumeHtml(s)}</span>`).join("")}
-                </div>
+    sectionsHtml.languages = data.languages ? `
+        <div class="resume-section">
+            <h2>${RESUME_SECTION_LABELS.languages}</h2>
+            <div class="resume-skill-tags">
+                ${data.languages.split(",").map(s => s.trim()).filter(Boolean).map(s => `<span>${escapeResumeHtml(s)}</span>`).join("")}
             </div>
-        `;
+        </div>
+    ` : "";
 
-    }
+    sectionsHtml.projects = data.projects ? `
+        <div class="resume-section">
+            <h2>${RESUME_SECTION_LABELS.projects}</h2>
+            <p style="white-space:pre-line;">${escapeResumeHtml(data.projects)}</p>
+        </div>
+    ` : "";
 
-    if (data.projects) {
+    sectionsHtml.certifications = data.certifications ? `
+        <div class="resume-section">
+            <h2>${RESUME_SECTION_LABELS.certifications}</h2>
+            <p style="white-space:pre-line;">${escapeResumeHtml(data.certifications)}</p>
+        </div>
+    ` : "";
 
-        html += `
-            <div class="resume-section">
-                <h2>Projects</h2>
-                <p style="white-space:pre-line;">${escapeResumeHtml(data.projects)}</p>
-            </div>
-        `;
+    sectionsHtml.achievements = data.achievements ? `
+        <div class="resume-section">
+            <h2>${RESUME_SECTION_LABELS.achievements}</h2>
+            <p style="white-space:pre-line;">${escapeResumeHtml(data.achievements)}</p>
+        </div>
+    ` : "";
 
-    }
+    sectionsHtml.custom = data.customSections.some(s => s.title || s.content) ? data.customSections.map((sec) => {
 
-    if (data.certifications) {
+        if (!sec.title && !sec.content) return "";
 
-        html += `
-            <div class="resume-section">
-                <h2>Certifications</h2>
-                <p style="white-space:pre-line;">${escapeResumeHtml(data.certifications)}</p>
-            </div>
-        `;
-
-    }
-
-    if (data.achievements) {
-
-        html += `
-            <div class="resume-section">
-                <h2>Achievements</h2>
-                <p style="white-space:pre-line;">${escapeResumeHtml(data.achievements)}</p>
-            </div>
-        `;
-
-    }
-
-    data.customSections.forEach((sec) => {
-
-        if (!sec.title && !sec.content) return;
-
-        html += `
+        return `
             <div class="resume-section">
                 <h2>${escapeResumeHtml(sec.title || "Additional Information")}</h2>
                 <p style="white-space:pre-line;">${escapeResumeHtml(sec.content)}</p>
             </div>
         `;
 
+    }).join("") : "";
+
+    sectionsHtml.hobbies = data.hobbies ? `
+        <div class="resume-section">
+            <h2>${RESUME_SECTION_LABELS.hobbies}</h2>
+            <p>${escapeResumeHtml(data.hobbies)}</p>
+        </div>
+    ` : "";
+
+    sectionsHtml.references = data.references ? `
+        <div class="resume-section">
+            <h2>${RESUME_SECTION_LABELS.references}</h2>
+            <p style="white-space:pre-line;">${escapeResumeHtml(data.references)}</p>
+        </div>
+    ` : "";
+
+    RESUME_SECTION_ORDER.forEach((key) => {
+
+        html += sectionsHtml[key] || "";
+
     });
-
-    if (data.hobbies) {
-
-        html += `
-            <div class="resume-section">
-                <h2>Hobbies &amp; Interests</h2>
-                <p>${escapeResumeHtml(data.hobbies)}</p>
-            </div>
-        `;
-
-    }
-
-    if (data.references) {
-
-        html += `
-            <div class="resume-section">
-                <h2>References</h2>
-                <p style="white-space:pre-line;">${escapeResumeHtml(data.references)}</p>
-            </div>
-        `;
-
-    }
 
     container.innerHTML = html;
 
@@ -634,6 +680,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initializeResumeRepeatButtons();
     initializeResumeDownloadButton();
     initializeResumeTemplatePicker();
+    renderResumeSectionOrderList();
 
     const navBrand = document.getElementById("navBrandHome");
 

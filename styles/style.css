@@ -4808,3 +4808,95 @@ body.desktop-preview-collapsed.has-desktop-preview .biodata-form-section{
     margin-right: 48px;
 
 }
+
+
+/*==========================================================
+                RESUME SECTION REORDER LIST
+==========================================================*/
+
+.resume-section-order-list{
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+}
+
+.resume-section-order-item{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: #f7f9fc;
+    border: 1px solid #e3e8ef;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e3a5f;
+
+}
+
+.resume-section-order-buttons{
+
+    display: flex;
+    gap: 6px;
+
+}
+
+.resume-order-btn{
+
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background: #fff;
+    cursor: pointer;
+    font-size: 13px;
+    color: #555;
+
+}
+
+.resume-order-btn:hover:not(:disabled){
+
+    background: #2f6fed;
+    color: #fff;
+    border-color: #2f6fed;
+
+}
+
+.resume-order-btn:disabled{
+
+    opacity: 0.35;
+    cursor: not-allowed;
+
+}
+
+
+/*==========================================================
+                SKIP TO CONTENT LINK
+==========================================================*/
+
+.skip-to-content{
+
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 100002;
+    background: #2f6fed;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 0 0 8px 0;
+    font-weight: 700;
+    text-decoration: none;
+
+}
+
+.skip-to-content:focus{
+
+    left: 0;
+
+}

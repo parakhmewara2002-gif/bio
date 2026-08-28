@@ -165,7 +165,7 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 
-    <link href="/css2" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- ==========================
             BOOTSTRAP CSS
@@ -190,6 +190,8 @@
     <link rel="stylesheet" href="./styles/responsive.css">
 
     <link rel="stylesheet" href="./styles/print.css">
+
+    <link rel="stylesheet" href="./styles/v2-theme.css">
 
 </head>
 
@@ -277,6 +279,14 @@
 
                     </li>
 
+                    <li class="nav-item">
+
+                        <button type="button" id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+                            <span class="dark-mode-icon">🌙</span>
+                        </button>
+
+                    </li>
+
                 </ul>
 
             </div>
@@ -287,13 +297,20 @@
 
 </header>
 
-<main>
+<a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+<main id="main-content">
 
     <!-- ==========================================================
                             HERO SECTION
     =========================================================== -->
 
     <section id="hero" class="hero-section">
+
+        <span class="v2-orb v2-orb-1"></span>
+        <span class="v2-orb v2-orb-2"></span>
+        <span class="v2-orb v2-orb-3"></span>
+        <span class="v2-orb v2-orb-4"></span>
 
         <div class="container">
 
@@ -3466,6 +3483,20 @@
 
                     </div>
 
+                    <div class="form-card">
+
+                        <div class="form-card-header">
+
+                            <h3>📑 Reorder Sections</h3>
+
+                            <p>Change the order sections appear in on your resume. Only sections with content will show up in the final PDF.</p>
+
+                        </div>
+
+                        <ul class="resume-section-order-list" id="resumeSectionOrderList"></ul>
+
+                    </div>
+
                 </div>
 
                 <!-- ============ STEP 5: REVIEW & DOWNLOAD ============ -->
@@ -3939,6 +3970,8 @@
 
 <!-- Bootstrap JS -->
 <script src="./scripts/bootstrap.bundle.min.js"></script>
+
+<script src="./scripts/dark-mode.js"></script>
 
 <!-- html2canvas -->
 <script src="./scripts/html2canvas.min.js"></script>
