@@ -3101,6 +3101,20 @@
 
                                 </button>
 
+                                <div class="share-actions mt-3">
+
+                                    <button type="button" id="whatsappShareBiodataBtn" class="btn btn-outline-success btn-sm">
+                                        <i class="fa-brands fa-whatsapp me-1"></i> Share via WhatsApp
+                                    </button>
+
+                                    <button type="button" id="qrCodeBiodataBtn" class="btn btn-outline-secondary btn-sm">
+                                        <i class="fa-solid fa-qrcode me-1"></i> Contact QR Code
+                                    </button>
+
+                                </div>
+
+                                <div class="qr-code-preview d-none" id="qrCodeBiodataPreview"></div>
+
                             </div> <!-- End PDF Actions -->
 
                     </div> <!-- End form-card -->
@@ -3563,6 +3577,20 @@
                                 <i class="fa-solid fa-file-pdf me-2"></i>
                                 Download PDF
                             </button>
+
+                            <div class="share-actions mt-3">
+
+                                <button type="button" id="whatsappShareResumeBtn" class="btn btn-outline-success btn-sm">
+                                    <i class="fa-brands fa-whatsapp me-1"></i> Share via WhatsApp
+                                </button>
+
+                                <button type="button" id="qrCodeResumeBtn" class="btn btn-outline-secondary btn-sm">
+                                    <i class="fa-solid fa-qrcode me-1"></i> Contact QR Code
+                                </button>
+
+                            </div>
+
+                            <div class="qr-code-preview d-none" id="qrCodeResumePreview"></div>
 
                         </div>
 
@@ -4033,6 +4061,10 @@
 
 <script src="./scripts/config.js"></script>
 
+
+<script src="./scripts/qrcode.min.js"></script>
+
+<script src="./scripts/share-features.js"></script>
 
 <script src="./scripts/pdf.js"></script>
 

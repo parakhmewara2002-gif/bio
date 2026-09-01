@@ -4899,3 +4899,36 @@ body.desktop-preview-collapsed.has-desktop-preview .biodata-form-section{
     left: 0;
 
 }
+
+
+/*==========================================================
+                SHARE ACTIONS (WhatsApp + QR Code)
+==========================================================*/
+
+.share-actions{
+
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+
+}
+
+.qr-code-preview{
+
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.qr-code-preview svg{
+
+    max-width: 160px;
+    height: auto;
+    background: #fff;
+    padding: 8px;
+    border-radius: 10px;
+    box-shadow: 0 4px 14px -6px rgba(0,0,0,0.2);
+
+}
