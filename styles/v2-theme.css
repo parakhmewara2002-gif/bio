@@ -661,3 +661,42 @@ html[data-theme="dark"] .hero-chip{
     }
 
 }
+
+
+/*==========================================================
+                LANGUAGE TOGGLE BUTTON
+==========================================================*/
+
+.language-toggle{
+
+    height: 42px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1.5px solid var(--v2-border);
+    background: var(--v2-surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: var(--v2-font-body);
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--v2-ink);
+    margin-left: 8px;
+    transition: background .2s ease, border-color .2s ease;
+
+}
+
+.language-toggle:hover{
+
+    border-color: var(--v2-primary);
+    color: var(--v2-primary);
+
+}
+
+html[data-theme="dark"] .language-toggle{
+
+    background: var(--v2-surface-alt);
+    border-color: var(--v2-border);
+
+}
