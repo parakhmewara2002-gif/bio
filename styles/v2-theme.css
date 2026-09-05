@@ -879,3 +879,108 @@ html[data-theme="dark"] .language-toggle{
     }
 
 }
+
+
+/*==========================================================
+        INTERACTIVE TEMPLATE SHOWCASE
+==========================================================*/
+
+.showcase-section{
+
+    background: var(--v2-surface) !important;
+    padding: 70px 0;
+
+}
+
+html[data-theme="dark"] .showcase-section{
+
+    background: var(--v2-surface-alt) !important;
+
+}
+
+.showcase-scroll{
+
+    display: flex;
+    gap: 22px;
+    overflow-x: auto;
+    padding: 10px 4px 26px;
+    scroll-snap-type: x mandatory;
+
+}
+
+.showcase-scroll::-webkit-scrollbar{
+
+    height: 8px;
+
+}
+
+.showcase-card{
+
+    flex: 0 0 200px;
+    scroll-snap-align: start;
+    background: var(--v2-surface-alt);
+    border: 1px solid var(--v2-border);
+    border-radius: var(--v2-radius-md);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease, border-color .3s ease;
+    cursor: pointer;
+
+}
+
+.showcase-card:hover{
+
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: var(--v2-shadow-strong);
+    border-color: var(--v2-primary);
+
+}
+
+.showcase-mockup{
+
+    width: 140px;
+    height: 180px;
+
+}
+
+.showcase-info{
+
+    text-align: center;
+
+}
+
+.showcase-label{
+
+    display: inline-block;
+    background: var(--v2-primary-soft);
+    color: var(--v2-primary);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 999px;
+    margin-bottom: 8px;
+    font-family: var(--v2-font-body);
+
+}
+
+.showcase-info h4{
+
+    font-family: var(--v2-font-display);
+    font-size: 15px;
+    color: var(--v2-ink);
+    margin-bottom: 10px;
+
+}
+
+.showcase-use-btn{
+
+    border-radius: 999px !important;
+    font-family: var(--v2-font-body);
+    font-weight: 700;
+    background: var(--v2-primary) !important;
+    border: none !important;
+
+}
