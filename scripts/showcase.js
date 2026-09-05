@@ -62,9 +62,30 @@ function initializePreviewCreateButton() {
 }
 
 
+function initializeFinalCtaButtons() {
+
+    const biodataBtn = document.getElementById("finalCtaBiodataBtn");
+    const resumeBtn = document.getElementById("finalCtaResumeBtn");
+
+    if (biodataBtn && typeof openBiodataForm === "function") {
+
+        biodataBtn.addEventListener("click", openBiodataForm);
+
+    }
+
+    if (resumeBtn && typeof openResumeForm === "function") {
+
+        resumeBtn.addEventListener("click", openResumeForm);
+
+    }
+
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
 
     initializeShowcaseButtons();
     initializePreviewCreateButton();
+    initializeFinalCtaButtons();
 
 });

@@ -1183,3 +1183,70 @@ html[data-theme="dark"] .showcase-section{
     .ai-msg-typing span{ animation: none; }
 
 }
+
+
+/*==========================================================
+        FINAL CALL TO ACTION
+==========================================================*/
+
+.final-cta-section{
+
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--v2-gradient-1), var(--v2-primary-dark));
+    padding: 90px 0;
+
+}
+
+.final-cta-heading{
+
+    font-family: var(--v2-font-display);
+    font-weight: 700;
+    color: #fff;
+    font-size: clamp(28px, 4vw, 44px);
+    margin-bottom: 16px;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.final-cta-subtext{
+
+    color: rgba(255,255,255,0.85);
+    font-family: var(--v2-font-body);
+    font-size: 16.5px;
+    max-width: 560px;
+    margin: 0 auto 32px;
+
+}
+
+.final-cta-buttons{
+
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+.final-cta-btn{
+
+    border-radius: 999px !important;
+    font-family: var(--v2-font-body);
+    font-weight: 700;
+    padding: 14px 32px !important;
+
+}
+
+.final-cta-buttons .btn-light{
+
+    color: var(--v2-primary) !important;
+
+}
+
+.final-cta-buttons .btn-outline-light{
+
+    border-width: 2px !important;
+
+}
