@@ -9,8 +9,10 @@
 const CUSTOMIZE_STATE = {
     biodataAccent: "",
     biodataFontSize: "medium",
+    biodataFontFamily: "",
     resumeAccent: "",
-    resumeFontSize: "medium"
+    resumeFontSize: "medium",
+    resumeFontFamily: ""
 };
 
 
@@ -25,6 +27,8 @@ function applyBiodataCustomization() {
 
     if (CUSTOMIZE_STATE.biodataFontSize === "small") container.classList.add("customize-font-small");
     if (CUSTOMIZE_STATE.biodataFontSize === "large") container.classList.add("customize-font-large");
+
+    container.style.fontFamily = CUSTOMIZE_STATE.biodataFontFamily || "";
 
     const accent = CUSTOMIZE_STATE.biodataAccent;
 
@@ -53,6 +57,8 @@ function applyResumeCustomization() {
     if (CUSTOMIZE_STATE.resumeFontSize === "small") container.classList.add("customize-font-small");
     if (CUSTOMIZE_STATE.resumeFontSize === "large") container.classList.add("customize-font-large");
 
+    container.style.fontFamily = CUSTOMIZE_STATE.resumeFontFamily || "";
+
     const accent = CUSTOMIZE_STATE.resumeAccent;
 
     if (!accent) return;
@@ -73,6 +79,18 @@ function initializeCustomizePanel(targetPrefix, stateAccentKey, stateFontKey) {
     const swatchWrap = document.querySelector(`.customize-swatches[data-target="${targetPrefix}Accent"]`);
     const sizeWrap = document.querySelector(`.customize-size-buttons[data-target="${targetPrefix}FontSize"]`);
     const customColorInput = document.getElementById(`${targetPrefix}AccentCustom`);
+    const fontFamilySelect = document.getElementById(`${targetPrefix}FontFamily`);
+    const stateFontFamilyKey = `${targetPrefix}FontFamily`;
+
+    if (fontFamilySelect) {
+
+        fontFamilySelect.addEventListener("change", () => {
+
+            CUSTOMIZE_STATE[stateFontFamilyKey] = fontFamilySelect.value;
+
+        });
+
+    }
 
     if (swatchWrap) {
 
