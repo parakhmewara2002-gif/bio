@@ -195,9 +195,12 @@ function renderResumeSectionOrderList() {
 
         const li = document.createElement("li");
         li.className = "resume-section-order-item";
+        li.setAttribute("draggable", "true");
+        li.dataset.index = index;
 
         li.innerHTML = `
-            <span>${RESUME_SECTION_LABELS[key] || key}</span>
+            <span class="resume-order-drag-handle" aria-hidden="true">⠿</span>
+            <span class="resume-order-item-label">${RESUME_SECTION_LABELS[key] || key}</span>
             <span class="resume-section-order-buttons">
                 <button type="button" class="resume-order-btn" data-dir="up" data-index="${index}" ${index === 0 ? "disabled" : ""} aria-label="Move ${RESUME_SECTION_LABELS[key]} up">↑</button>
                 <button type="button" class="resume-order-btn" data-dir="down" data-index="${index}" ${index === RESUME_SECTION_ORDER.length - 1 ? "disabled" : ""} aria-label="Move ${RESUME_SECTION_LABELS[key]} down">↓</button>
@@ -221,6 +224,67 @@ function renderResumeSectionOrderList() {
             const temp = RESUME_SECTION_ORDER[index];
             RESUME_SECTION_ORDER[index] = RESUME_SECTION_ORDER[swapWith];
             RESUME_SECTION_ORDER[swapWith] = temp;
+
+            renderResumeSectionOrderList();
+            renderResumePreview();
+
+        });
+
+    });
+
+    initializeResumeSectionDragDrop(list);
+
+}
+
+
+let resumeDragSourceIndex = null;
+
+
+function initializeResumeSectionDragDrop(list) {
+
+    const items = list.querySelectorAll(".resume-section-order-item");
+
+    items.forEach((item) => {
+
+        item.addEventListener("dragstart", () => {
+
+            resumeDragSourceIndex = parseInt(item.dataset.index, 10);
+            item.classList.add("dragging");
+
+        });
+
+        item.addEventListener("dragend", () => {
+
+            item.classList.remove("dragging");
+
+        });
+
+        item.addEventListener("dragover", (e) => {
+
+            e.preventDefault();
+            item.classList.add("drag-over");
+
+        });
+
+        item.addEventListener("dragleave", () => {
+
+            item.classList.remove("drag-over");
+
+        });
+
+        item.addEventListener("drop", (e) => {
+
+            e.preventDefault();
+            item.classList.remove("drag-over");
+
+            const targetIndex = parseInt(item.dataset.index, 10);
+
+            if (resumeDragSourceIndex === null || resumeDragSourceIndex === targetIndex) return;
+
+            const moved = RESUME_SECTION_ORDER.splice(resumeDragSourceIndex, 1)[0];
+            RESUME_SECTION_ORDER.splice(targetIndex, 0, moved);
+
+            resumeDragSourceIndex = null;
 
             renderResumeSectionOrderList();
             renderResumePreview();

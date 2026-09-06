@@ -4828,6 +4828,7 @@ body.desktop-preview-collapsed.has-desktop-preview .biodata-form-section{
 
     display: flex;
     align-items: center;
+    gap: 10px;
     justify-content: space-between;
     padding: 10px 14px;
     background: #f7f9fc;
@@ -4836,6 +4837,41 @@ body.desktop-preview-collapsed.has-desktop-preview .biodata-form-section{
     font-size: 14px;
     font-weight: 600;
     color: #1e3a5f;
+    cursor: grab;
+    transition: opacity .15s ease, border-color .15s ease, background .15s ease;
+
+}
+
+.resume-section-order-item:active{
+
+    cursor: grabbing;
+
+}
+
+.resume-section-order-item.dragging{
+
+    opacity: 0.4;
+
+}
+
+.resume-section-order-item.drag-over{
+
+    border-color: #2f6fed;
+    background: #eef4ff;
+
+}
+
+.resume-order-drag-handle{
+
+    color: #9aa5b8;
+    font-size: 16px;
+    cursor: grab;
+
+}
+
+.resume-order-item-label{
+
+    flex: 1;
 
 }
 
